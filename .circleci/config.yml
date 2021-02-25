@@ -1,0 +1,4 @@
+defaults: &defaults
+  working_directory: ~/rustnes
+  docker:
+    - image: 
