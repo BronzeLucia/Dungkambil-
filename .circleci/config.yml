@@ -1,4 +1,17 @@
 defaults: &defaults
   working_directory: ~/rustnes
   docker:
-    - image: 
+    - image: rust
+      environment:
+        DISPLAY: ":99"
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout  
+      - run:
+          name: Test
+          command: |
+            car
