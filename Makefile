@@ -6,4 +6,7 @@ build:
 	rm -rf target/wasm32-unknown-emscripten/release/rustynes.js
 	cargo rustc --release --bin rustynes \
 	--target=wasm32-unknown-emscripten -- \
-    -C opt
+    -C opt-level=3 \
+	-C link-args="-O3 -s NO_EXIT_RUNTIME=1 -s EXPORTED_FUNCTIONS=['_run'] -s EXTRA_EXPORTED_RUNTIME_METHODS=['cwrap']" \
+	--verbose
+	cp target/wasm32-unknown-emscripten/release/rustynes.js wasm/rustyn
