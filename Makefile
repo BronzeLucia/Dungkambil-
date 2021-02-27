@@ -15,3 +15,8 @@ build:
 
 clean:
 	rm -rf target/wasm32-unknown-emscripten/release/deps/*.wasm
+	rm -rf target/wasm32-unknown-emscripten/release/rustynes.js
+	rm -rf target/release
+
+standalone:
+	cargo rustc -p standalone --release
