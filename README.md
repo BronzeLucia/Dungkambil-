@@ -76,4 +76,20 @@ $cargo test
   - [ ] Mapper4
   - [ ] Othres
 - [x] PPU
-  - [x] 8 * 16 Spri
+  - [x] 8 * 16 Sprite
+- [ ] APU
+  - [x] Noise
+  - [ ] DCM
+- [ ] 2P GamePad  
+
+### v0.1.0
+
+prototype.
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2018 @bokuweb
+
+Permission is hereby granted, free of charge
