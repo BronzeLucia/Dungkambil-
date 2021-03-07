@@ -12,4 +12,13 @@ window.Module = {
   printErr: text => {
     console.error(text);
   },
-  onRuntimeInitialized() 
+  onRuntimeInitialized() {
+    start().catch(e => {
+      if (e == 'SimulateInfiniteLoop') {
+        Module['noExitRuntime'] = true;
+      }
+    });
+  },
+};
+fetch(`${name}.wasm`)
+  .then(resp => resp.arrayBuffer
