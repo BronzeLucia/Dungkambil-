@@ -21,4 +21,10 @@ window.Module = {
   },
 };
 fetch(`${name}.wasm`)
-  .then(resp => resp.arrayBuffer
+  .then(resp => resp.arrayBuffer())
+  .then(buffer => {
+    Module.wasmBinary = buffer;
+    const script = document.createElement("script");
+    script.src = `${name}.js`;
+    document.body.appendChild(script);
+  })
