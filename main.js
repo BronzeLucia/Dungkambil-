@@ -6,4 +6,10 @@ let buf = null
 const convertKeyCode = (keyCode) => {
   switch (keyCode) {
   case 88: return 0x01; // X  A
-  case 90: return 0x02; // Z 
+  case 90: return 0x02; // Z  B
+  case 65: return 0x04; // A  SELECT
+  case 83: return 0x08; // S  START
+  case 38: return 0x10; // ↑  ↑
+  case 40: return 0x20; // ↓  ↓
+  case 37: return 0x40; // ←  ←
+  case 39: return 0x80; /
