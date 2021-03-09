@@ -12,4 +12,15 @@ const convertKeyCode = (keyCode) => {
   case 38: return 0x10; // ↑  ↑
   case 40: return 0x20; // ↓  ↓
   case 37: return 0x40; // ←  ←
-  case 39: return 0x80; /
+  case 39: return 0x80; // →  →
+  }
+};
+
+const onKeydown = (e) => {
+  if (buf != null)
+    buf[buf.length - 1] |= convertKeyCode(e.keyCode);
+}
+
+const onKeyup = (e) => {
+  if (buf != null)
+    buf[buf.length - 1] &= ~con
