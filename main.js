@@ -37,4 +37,13 @@ setupKeyHandler();
 
 const startArrayBuf = (arrayBuf) => {
   const run = Module.cwrap('run', null, ['number', 'number']);
-  const canvas = document.querySelector("canvas"
+  const canvas = document.querySelector("canvas");
+  const ctx = canvas.getContext('2d');
+  if (Module.NES) {
+    Module.NES.oscs.forEach(o => o.close());
+    Module.NES.noise.close();
+  }
+  Module.NES = {
+    ctx,
+    canvas,
+    image: ctx.createIm
