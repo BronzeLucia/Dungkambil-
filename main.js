@@ -23,4 +23,10 @@ const onKeydown = (e) => {
 
 const onKeyup = (e) => {
   if (buf != null)
-    buf[buf.length - 1] &= ~con
+    buf[buf.length - 1] &= ~convertKeyCode(e.keyCode);
+}
+
+const setupKeyHandler = () => {
+  if (typeof window !== 'undefined') {
+    document.addEventListener('keydown', onKeydown);
+    document.addEventListener
