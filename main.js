@@ -46,4 +46,11 @@ const startArrayBuf = (arrayBuf) => {
   Module.NES = {
     ctx,
     canvas,
-    image: ctx.createIm
+    image: ctx.createImageData(256, 240),
+    oscs: [new Oscillator(), new Oscillator(), new Oscillator('triangle')],
+    noise: new Noise(),
+  }
+  canvas.width = 256;
+  canvas.height = 240;
+
+  const nes = new Uint8A
