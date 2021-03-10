@@ -29,4 +29,12 @@ const onKeyup = (e) => {
 const setupKeyHandler = () => {
   if (typeof window !== 'undefined') {
     document.addEventListener('keydown', onKeydown);
-    document.addEventListener
+    document.addEventListener('keyup', onKeyup);
+  }
+};
+
+setupKeyHandler();
+
+const startArrayBuf = (arrayBuf) => {
+  const run = Module.cwrap('run', null, ['number', 'number']);
+  const canvas = document.querySelector("canvas"
