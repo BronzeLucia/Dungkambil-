@@ -53,4 +53,11 @@ const startArrayBuf = (arrayBuf) => {
   canvas.width = 256;
   canvas.height = 240;
 
-  const nes = new Uint8A
+  const nes = new Uint8Array(arrayBuf);
+  // Add key code area to tail.
+  const size = nes.byteLength + 1;
+  const ptr = Module._malloc(size);
+  buf = new Uint8Array(Module.HEAPU8.buffer, ptr, size);
+  buf.set(nes);
+
+  consol
