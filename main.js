@@ -60,4 +60,11 @@ const startArrayBuf = (arrayBuf) => {
   buf = new Uint8Array(Module.HEAPU8.buffer, ptr, size);
   buf.set(nes);
 
-  consol
+  console.log('start nes');
+  run(size, buf.byteOffset);
+};
+
+export const start = async (rom = './roms/falling.nes') => {
+  const res = await fetch(rom);
+  const arrayBuf = await res.arrayBuffer();
+  startArra
