@@ -67,4 +67,12 @@ const startArrayBuf = (arrayBuf) => {
 export const start = async (rom = './roms/falling.nes') => {
   const res = await fetch(rom);
   const arrayBuf = await res.arrayBuffer();
-  startArra
+  startArrayBuf(arrayBuf);
+};
+
+export const startFile = async (file) => {
+  const loadFile = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      read
