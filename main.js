@@ -75,4 +75,11 @@ export const startFile = async (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (e) => resolve(e.target.result);
-      read
+      reader.onerror = (e) => reject(reader.error);
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
+  const arrayBuf = await loadFile(file)
+  startArrayBuf(arrayBuf);
+};
