@@ -20,4 +20,10 @@ reset:
 	; Loop endlessly
 loop:   jsr wait_nmi
 	
-	; You coul
+	; You could run normal code between NMIs here,
+	; as long as it completes BEFORE NMI. If it
+	; takes too long, synchronization may be off
+	; by a few cycles for that frame.
+	; ...
+	
+	jmp loop
