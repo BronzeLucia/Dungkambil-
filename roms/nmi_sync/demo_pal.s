@@ -8,4 +8,16 @@
 ;
 ; Shay Green <gblargg@gmail.com>
 
-.include "nmi_s
+.include "nmi_sync.s"
+
+reset:
+	; Initialize PPU and palette
+	jsr init_graphics
+	
+	; Synchronize with PPU and enable NMI
+	jsr init_nmi_sync_pal
+	
+	; Loop endlessly
+loop:   jsr wait_nmi
+	
+	; You coul
