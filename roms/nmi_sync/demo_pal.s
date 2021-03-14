@@ -1,2 +1,11 @@
 ; Uses nmi_sync to manually display line on screen
-; using
+; using timed write. See readme.txt.
+;
+; PAL NES only. Tested on hardware.
+;
+; ca65 -o rom.o demo_pal.s
+; ld65 -C unrom.cfg rom.o -o demo_pal.nes
+;
+; Shay Green <gblargg@gmail.com>
+
+.include "nmi_s
