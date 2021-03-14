@@ -27,3 +27,14 @@ loop:   jsr wait_nmi
 	; ...
 	
 	jmp loop
+
+
+.align 256 ; branches must not cross page
+nmi:
+	pha
+	
+	; Do this sometime before you DMA sprites
+	jsr begin_nmi_sync
+	
+	; DMA then enable sprites. Instructions before
+	; STA $4014 (e
