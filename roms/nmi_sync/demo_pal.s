@@ -37,4 +37,12 @@ nmi:
 	jsr begin_nmi_sync
 	
 	; DMA then enable sprites. Instructions before
-	; STA $4014 (e
+	; STA $4014 (excluding begin_nmi_sync) must take
+	; an even number of cycles. The only required
+	; instruction here is STA $4014.
+	bit <0          ; to make cycle count even
+	lda #0
+	sta $2003
+	lda #>sprites
+	sta $4014
+	ld
