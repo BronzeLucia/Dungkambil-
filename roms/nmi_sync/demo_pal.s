@@ -45,4 +45,17 @@ nmi:
 	sta $2003
 	lda #>sprites
 	sta $4014
-	ld
+	lda #$10
+	sta $2001
+	
+	; Our instructions up to this point MUST total
+	; 6900 cycles, so we'll burn the rest in a loop.
+	
+	; delay 6900 - 30
+	lda #9
+	sec
+nmi_1:  pha
+	lda #150
+nmi_2:  sbc #1
+	bne nmi_2
+	pla
