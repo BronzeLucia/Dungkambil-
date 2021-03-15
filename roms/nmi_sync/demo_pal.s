@@ -59,3 +59,19 @@ nmi_1:  pha
 nmi_2:  sbc #1
 	bne nmi_2
 	pla
+	sbc #1
+	bne nmi_1
+	
+	jsr end_nmi_sync
+	
+	; We're now synchronized exactly to 7471 cycles
+	; after beginning of frame.
+	
+	; delay 20486 - 7471 - 5
+	nop
+	lda #85
+	sec
+nmi_3:  pha
+	lda #28
+nmi_4:  sbc #1
+	
