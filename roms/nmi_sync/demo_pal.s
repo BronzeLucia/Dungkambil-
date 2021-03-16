@@ -74,4 +74,20 @@ nmi_2:  sbc #1
 nmi_3:  pha
 	lda #28
 nmi_4:  sbc #1
-	
+	bne nmi_4
+	pla
+	sbc #1
+	bne nmi_3
+
+	; Draw short line using monochrome mode bit
+	lda #$11
+	sta $2001       ; writes 20486 cycles into frame
+	lda #$10
+	sta $2001
+
+	pla
+	rti
+
+
+.align 256
+spri
