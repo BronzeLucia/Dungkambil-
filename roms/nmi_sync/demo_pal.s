@@ -90,4 +90,16 @@ nmi_4:  sbc #1
 
 
 .align 256
-spri
+sprites:
+	; Reference sprites around manually-drawn line
+	.byte 118, 0, 0, 82
+	.byte 118, 0, 0, 82+8
+	.byte 118, 1, 0, 82+16
+	
+	.byte 122, 0, 0, 84
+	.byte 122, 0, 0, 84+8
+	
+	.res 256 - 5*4, $FF
+
+
+init
