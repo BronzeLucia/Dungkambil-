@@ -102,4 +102,19 @@ sprites:
 	.res 256 - 5*4, $FF
 
 
-init
+init_graphics:
+	sei
+	
+	; Init PPU
+	bit $2002
+init_graphics_1:
+	bit $2002
+	bpl init_graphics_1
+init_graphics_2:
+	bit $2002
+	bpl init_graphics_2
+	lda #0
+	sta $2000
+	sta $2001
+	
+	; Load alternating blac
