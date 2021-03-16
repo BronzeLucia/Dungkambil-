@@ -117,4 +117,17 @@ init_graphics_2:
 	sta $2000
 	sta $2001
 	
-	; Load alternating blac
+	; Load alternating black and white palette
+	lda #$3F
+	sta $2006
+	ldy #$E0
+	sty $2006
+init_graphics_3:
+	sta $2007
+	eor #$0F
+	iny
+	bne init_graphics_3
+
+	rts
+
+; Freeze program if this somehow gets triggered, 
