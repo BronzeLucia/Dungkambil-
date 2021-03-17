@@ -140,4 +140,14 @@ irq:    jmp irq
 	.byte 0,0,0,0,0,0,0,0
 
 .segment "VECTORS"
-	.word 0,0,0, nmi, reset,
+	.word 0,0,0, nmi, reset, irq
+
+.segment "CHARS"
+	; Characters for sprites
+	.byte $FF,0,0,0,0,0,0,0
+	.byte   0,0,0,0,0,0,0,0
+	
+	.byte $FF,$FF,$FF,$FF,$FF,0,0,0
+	.byte 0,0,0,0,0,0,0,0
+	
+	.res $2000 - $20
