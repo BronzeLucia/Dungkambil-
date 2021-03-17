@@ -130,4 +130,14 @@ init_graphics_3:
 
 	rts
 
-; Freeze program if this somehow gets triggered, 
+; Freeze program if this somehow gets triggered, rather
+; than silently messing up timing
+irq:    jmp irq
+
+
+.segment "HEADER"
+	.byte "NES",26, 2,1, 0,0 ; 32K PRG, 8K CHR, UNROM
+	.byte 0,0,0,0,0,0,0,0
+
+.segment "VECTORS"
+	.word 0,0,0, nmi, reset,
