@@ -154,3 +154,10 @@ the position of the sprite.
 --------------
 Tests sprite 0 hit timing for which pixel it first reports hit on when
 some pixels are under clip, or at or beyond right edge.
+
+2) Hit time shouldn't be based on pixels under left clip
+3) Hit time shouldn't be based on pixels at X=255
+4) Hit time shouldn't be based on pixels off right edge
+
+-- 
+Shay Green <hotpop.com@blargg> (swap to e-mail)
