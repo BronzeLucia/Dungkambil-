@@ -8,3 +8,17 @@ test_name:
       .code
 
 set_params:
+      sta   sprite_tile
+      eor   #$03
+      pha
+      jsr   set_sprite_xy
+      lda   #$21
+      ldx   #$f0
+      jsr   set_vaddr
+      pla
+      sta   $2007
+      rts
+      .code
+
+reset:
+    
