@@ -21,4 +21,13 @@ set_params:
       .code
 
 reset:
-    
+      jsr   begin_sprite_hit_tests
+      
+      lda   #0
+      sta   sprite_attr
+      
+      lda   #lower_right_tile
+      ldx   #121
+      ldy   #112
+      jsr   set_params
+  
