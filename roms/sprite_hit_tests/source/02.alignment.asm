@@ -88,3 +88,12 @@ reset:
       lda   #9;) Sprite should miss bottom of bg tile
       ldx   #$18
       jsr   sprite_should_miss
+      
+      ldx   #128
+      ldy   #126
+      jsr   set_sprite_xy
+      lda   #10;) Sprite should hit bottom of bg tile
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      jmp   tests_passed
