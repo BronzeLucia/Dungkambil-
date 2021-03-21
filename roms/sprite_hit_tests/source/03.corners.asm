@@ -46,4 +46,12 @@ reset:
       ldx   #121
       ldy   #126
       jsr   set_params
-      lda   #4;) Uppe
+      lda   #4;) Upper-right pixel should hit
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      lda   #upper_left_tile
+      ldx   #135
+      ldy   #126
+      jsr   set_params
+      lda   #5;) Upper-
