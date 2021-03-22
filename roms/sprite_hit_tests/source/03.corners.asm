@@ -54,4 +54,8 @@ reset:
       ldx   #135
       ldy   #126
       jsr   set_params
-      lda   #5;) Upper-
+      lda   #5;) Upper-left pixel should hit
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      jmp   tests_passed
