@@ -57,3 +57,16 @@ reset:
       
       lda   #8
       sta   sprite_x
+      lda   #7;) Should hit; sprite pixel outside left-edge clip
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      lda   #upper_right_tile
+      sta   sprite_tile
+      lda   #1
+      sta   sprite_x
+      lda   #8;) Should hit; sprite pixel outside left-edge clip
+      ldx   #$18
+      jsr   sprite_should_hit
+
+      jmp   tests_passed
