@@ -18,3 +18,10 @@ reset:
       
       ; Basic
       
+      lda   #solid_tile
+      sta   sprite_tile
+      lda   #255
+      sta   sprite_x
+      lda   #2;) Should always miss when X = 255
+      ldx   #$1e
+      jsr   sprite_should_miss
