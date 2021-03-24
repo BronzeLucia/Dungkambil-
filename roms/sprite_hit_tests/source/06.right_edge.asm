@@ -25,3 +25,14 @@ reset:
       lda   #2;) Should always miss when X = 255
       ldx   #$1e
       jsr   sprite_should_miss
+      
+      lda   #254
+      sta   sprite_x
+      lda   #3;) Should hit; sprite has pixels < 255
+      ldx   #$1e
+      jsr   sprite_should_hit
+      
+      ; Detailed
+      
+      lda   #upper_right_tile
+      sta
