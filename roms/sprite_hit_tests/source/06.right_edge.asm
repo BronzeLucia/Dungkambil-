@@ -44,4 +44,11 @@ reset:
       
       lda   #247
       sta   sprite_x
-      lda   #5;) 
+      lda   #5;) Should hit; sprite pixel is at 254
+      ldx   #$1e
+      jsr   sprite_should_hit
+      
+      lda   #upper_left_tile
+      sta   sprite_tile
+      lda   #254
+      sta   sprite_x
