@@ -35,4 +35,13 @@ reset:
       ; Detailed
       
       lda   #upper_right_tile
-      sta
+      sta   sprite_tile
+      lda   #248
+      sta   sprite_x
+      lda   #4;) Should miss; sprite pixel is at 255
+      ldx   #$1e
+      jsr   sprite_should_miss
+      
+      lda   #247
+      sta   sprite_x
+      lda   #5;) 
