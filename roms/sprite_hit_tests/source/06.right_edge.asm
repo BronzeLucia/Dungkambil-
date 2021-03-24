@@ -52,3 +52,9 @@ reset:
       sta   sprite_tile
       lda   #254
       sta   sprite_x
+      lda   #6;) Should also hit; sprite pixel is at 254
+      ldx   #$1e
+      jsr   sprite_should_hit
+      
+      jmp   tests_passed
+
