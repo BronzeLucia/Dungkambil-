@@ -47,3 +47,19 @@ reset:
       lda   #5;) Should hit; sprite pixel is at 238
       ldx   #$1e
       jsr   sprite_should_hit
+      
+      lda   #232
+      sta   sprite_y
+      lda   #6;) Should miss; sprite pixel is at 239
+      ldx   #$1e
+      jsr   sprite_should_miss
+      
+      lda   #upper_left_tile
+      sta   sprite_tile
+      lda   #238
+      sta   sprite_y
+      lda   #7;) Should hit; sprite pixel is at 238
+      ldx   #$1e
+      jsr   sprite_should_hit
+      
+      jmp   tests_passed
