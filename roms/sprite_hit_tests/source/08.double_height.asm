@@ -33,4 +33,12 @@ reset:
       
       ldx   #128
       ldy   #118
-      jsr   set_s
+      jsr   set_sprite_xy
+      lda   #3;) Lower sprite tile should hit bottom of bg tile
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      ldx   #128
+      ldy   #103
+      jsr   set_sprite_xy
+      lda   #3
