@@ -7,4 +7,12 @@ test_name:
       .code
 
 reset:
-      jsr   begin_s
+      jsr   begin_sprite_hit_tests
+      
+      lda   #$20        ; double-height sprites
+      sta   $2000
+      
+      ; Single solid tile in middle of screen
+      lda   #$21
+      ldx   #$f0
+      jsr   s
