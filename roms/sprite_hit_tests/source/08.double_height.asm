@@ -15,4 +15,14 @@ reset:
       ; Single solid tile in middle of screen
       lda   #$21
       ldx   #$f0
-      jsr   s
+      jsr   set_vaddr
+      lda   #solid_tile
+      sta   $2007
+      
+      lda   #0
+      sta   sprite_attr
+      lda   #0          ; tiles 0 and 1
+      sta   sprite_tile
+      
+      ldx   #128
+      ldy 
