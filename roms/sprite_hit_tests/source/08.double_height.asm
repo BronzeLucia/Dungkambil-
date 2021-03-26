@@ -25,4 +25,12 @@ reset:
       sta   sprite_tile
       
       ldx   #128
-      ldy 
+      ldy   #119
+      jsr   set_sprite_xy
+      lda   #2;) Lower sprite tile should miss bottom of bg tile
+      ldx   #$18
+      jsr   sprite_should_miss
+      
+      ldx   #128
+      ldy   #118
+      jsr   set_s
