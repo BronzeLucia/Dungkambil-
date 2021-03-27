@@ -48,4 +48,8 @@ reset:
       ldx   #128
       ldy   #104
       jsr   set_sprite_xy
-      lda   #4;) Lower sprite 
+      lda   #4;) Lower sprite tile should hit top of bg tile
+      ldx   #$18
+      jsr   sprite_should_hit
+      
+      jmp   tests_passed
