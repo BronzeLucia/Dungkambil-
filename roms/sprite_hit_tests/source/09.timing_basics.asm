@@ -77,3 +77,8 @@ reset:
       eor   #$40        ; invert readings
       tax
       tya
+      eor   #$40
+      tay
+      jsr   check_sprite_hit_timing
+      
+      jmp   tests_passed
