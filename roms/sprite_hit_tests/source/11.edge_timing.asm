@@ -14,4 +14,12 @@ reset:
       jsr   fill_nametable
 
       lda   #120
-      sta   sprite_
+      sta   sprite_y
+      lda   #two_corners_tile
+      sta   sprite_tile
+      lda   #0
+      sta   sprite_attr
+      
+      lda   #7
+      sta   sprite_x
+      lda   #2;) Hit time shouldn't be based on pixels under left 
