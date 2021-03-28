@@ -22,4 +22,15 @@ reset:
       
       lda   #7
       sta   sprite_x
-      lda   #2;) Hit time shouldn't be based on pixels under left 
+      lda   #2;) Hit time shouldn't be based on pixels under left clip
+      ldx   #$18
+      jsr   begin_sprite_hit_timing
+      ldy   #27         ; 16380 delay
+      lda   #120        
+      jsr   delay_ya1
+      lda   $2002
+      and   #$40
+      jsr   error_if_ne
+      
+      lda   #$80
+     
