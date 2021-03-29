@@ -33,4 +33,11 @@ reset:
       jsr   error_if_ne
       
       lda   #$80
-     
+      sta   sprite_attr
+      
+      lda   #248
+      sta   sprite_x
+      lda   #3;) Hit time shouldn't be based on pixels at X=255
+      ldx   #$18
+      jsr   begin_sprite_hit_timing
+      ldy 
