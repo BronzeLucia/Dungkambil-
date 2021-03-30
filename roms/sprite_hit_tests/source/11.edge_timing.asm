@@ -40,4 +40,13 @@ reset:
       lda   #3;) Hit time shouldn't be based on pixels at X=255
       ldx   #$18
       jsr   begin_sprite_hit_timing
-      ldy 
+      ldy   #41         ; 16458 delay
+      lda   #79         
+      jsr   delay_ya0
+      lda   $2002
+      and   #$40
+      jsr   error_if_ne
+      
+      lda   #249
+      sta   sprite_x
+      lda   #4;) Hit time shouldn
