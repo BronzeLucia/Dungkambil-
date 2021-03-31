@@ -56,3 +56,7 @@ reset:
       lda   #79         
       jsr   delay_ya0
       lda   $2002
+      and   #$40
+      jsr   error_if_ne
+      
+      jmp   tests_passed

@@ -1,0 +1,7 @@
+      .include "prefix_ppu.a"
+
+sprites     = $200
+sprite_y    = $200
+sprite_tile = $201
+sprite_attr = $202
+sp
