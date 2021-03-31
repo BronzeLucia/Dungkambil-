@@ -4,4 +4,16 @@ sprites     = $200
 sprite_y    = $200
 sprite_tile = $201
 sprite_attr = $202
-sp
+sprite_x    = $203
+
+; Clear sprite table
+clear_sprite_table:
+      lda   #$f8
+      ldx   #0
+:     sta   sprites,x
+      inx
+      bne   -
+      rts
+      .code
+
+; Use DMA to copy sprite table
