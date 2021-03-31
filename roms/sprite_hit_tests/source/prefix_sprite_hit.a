@@ -30,4 +30,16 @@ dma_sprite_table:
 
 ; Set sprite 0 X and Y in table
 ; Preserved: A, X, Y
-set
+set_sprite_xy:
+      stx   sprite_x
+      sty   sprite_y
+      rts
+      .code
+
+; Set sprite 0 X and Y in PPU
+; Preserved: A, X, Y
+set_sprite_xy_ppu:
+      pha
+      lda   #0
+      sta   $2003
+      sty   $2004
