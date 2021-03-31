@@ -16,4 +16,18 @@ clear_sprite_table:
       rts
       .code
 
-; Use DMA to copy sprite table
+; Use DMA to copy sprite table to PPU
+; Preserved: A, X, Y
+dma_sprite_table:
+      pha
+      lda   #0
+      sta   $2003
+      lda   #$02
+      sta   $4014 ; 57587
+      pla
+      rts
+      .code
+
+; Set sprite 0 X and Y in table
+; Preserved: A, X, Y
+set
