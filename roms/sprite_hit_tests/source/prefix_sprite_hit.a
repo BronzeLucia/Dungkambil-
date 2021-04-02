@@ -60,4 +60,17 @@ blank_tile = 0
       .db   $00,$00,$00,$00,$00,$00,$00,$00
       
       .db   $00,$00,$00,$00,$00,$00,$00,$00
-      .db   $ff,$ff,$ff,$ff,$ff
+      .db   $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+
+solid_tile = 3
+      .db   $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+      .db   $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+      
+      ; 4-7 upper-left, upper-right, lower-left, lower-right
+upper_left_tile = 4
+      .db   $80,$00,$00,$00,$00,$00,$00,$00
+      .db   $80,$00,$00,$00,$00,$00,$00,$00
+      
+upper_right_tile = 5
+      .db   $01,$00,$00,$00,$00,$00,$00,$00
+      .db
