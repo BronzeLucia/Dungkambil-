@@ -87,4 +87,13 @@ two_corners_tile = 8
       .db   $80,$00,$00,$00,$00,$00,$00,$01
       .db   $80,$00,$00,$00,$00,$00,$00,$01
       
-      .
+      .code
+
+begin_sprite_hit_tests:
+      jsr   begin_ppu_test
+      jsr   clear_palette
+      jsr   clear_sprite_table
+      lda   #9
+      jsr   load_tiles
+      lda   #blank_tile
+      jsr   fil
