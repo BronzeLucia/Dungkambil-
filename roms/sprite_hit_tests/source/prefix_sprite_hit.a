@@ -107,4 +107,14 @@ test_for_hit:
       lda   #0
       sta   $2005
       sta   $2005
-      jsr   dma_s
+      jsr   dma_sprite_table
+      ldy   #153        ; 29240 delay
+      lda   #37         
+      jsr   delay_ya0
+      lda   $2002
+      ldx   #0          ; disable ppu
+      stx   $2001
+      rts
+      .code
+
+sprite_should_h
