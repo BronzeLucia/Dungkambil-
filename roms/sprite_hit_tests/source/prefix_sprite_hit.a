@@ -96,4 +96,15 @@ begin_sprite_hit_tests:
       lda   #9
       jsr   load_tiles
       lda   #blank_tile
-      jsr   fil
+      jsr   fill_nametable
+      rts
+      .code
+
+test_for_hit:
+      sta   <result
+      jsr   wait_vbl
+      stx   $2001       ; set ppu mode ; 18
+      lda   #0
+      sta   $2005
+      sta   $2005
+      jsr   dma_s
