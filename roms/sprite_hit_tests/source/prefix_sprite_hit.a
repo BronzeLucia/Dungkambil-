@@ -117,4 +117,18 @@ test_for_hit:
       rts
       .code
 
-sprite_should_h
+sprite_should_hit:
+      jsr   test_for_hit
+      and   #$40
+      jsr   error_if_eq
+      rts
+      .code
+
+sprite_should_miss:
+      jsr   test_for_hit
+      and   #$40
+      jsr   error_if_ne
+      rts
+      .code
+
+deb
