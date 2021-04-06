@@ -140,4 +140,13 @@ debug_sprite_hit_test:
       sta   $2005
       jsr   dma_sprite_table
       lda   #32
- 
+      jsr   debug_char
+      lda   #250
+      jsr   delay_msec
+      lda   #250
+      jsr   delay_msec
+      jmp   forever
+      .code
+      
+begin_sprite_hit_timing:
+      sta   re
