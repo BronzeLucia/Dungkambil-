@@ -164,4 +164,15 @@ begin_sprite_hit_timing:
       rts
       .code
 
-check_sprite_hit_timin
+check_sprite_hit_timing:
+      txa
+      and   #$40
+      jsr   error_if_ne
+      
+      inc   result
+      tya
+      and   #$40
+      jsr   error_if_eq
+      rts
+      .code
+
