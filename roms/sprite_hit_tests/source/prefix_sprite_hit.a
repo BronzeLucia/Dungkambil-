@@ -149,4 +149,19 @@ debug_sprite_hit_test:
       .code
       
 begin_sprite_hit_timing:
-      sta   re
+      sta   result
+      txa
+      pha
+      jsr   sync_ppu_20
+      lda   #0
+      sta   $2005
+      sta   $2005
+      pla
+      sta   $2001
+      jsr   dma_sprite_table
+      nop         ; 4 delay
+      nop
+      rts
+      .code
+
+check_sprite_hit_timin
