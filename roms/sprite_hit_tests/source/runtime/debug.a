@@ -1,0 +1,10 @@
+
+; Beep A times. Made to require minimal features from APU.
+debug_beeps:
+beep_loop:
+      pha
+      
+      lda   #1          ; set up square 1
+      sta   $4015
+      sta   $4003
+      s
