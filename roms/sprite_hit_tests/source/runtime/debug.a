@@ -20,3 +20,16 @@ beep_loop:
       clc
       adc   #-1
       bpl   -
+      
+      sta   $4015       ; silence square for a bit
+      lda   #120
+      jsr   delay_msec
+      
+      pla
+      clc
+      adc   #-1
+      bne   beep_loop
+      rts
+      .code
+
+; Print address Y
