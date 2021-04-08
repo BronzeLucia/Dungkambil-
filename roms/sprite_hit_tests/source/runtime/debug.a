@@ -7,4 +7,16 @@ beep_loop:
       lda   #1          ; set up square 1
       sta   $4015
       sta   $4003
-      s
+      sta   $4001
+      sta   $4002
+      
+      lda   #$0f        ; fade volume
+:     pha
+      eor   #$30
+      sta   $4000
+      lda   #8
+      jsr   delay_msec
+      pla
+      clc
+      adc   #-1
+      bpl   -
