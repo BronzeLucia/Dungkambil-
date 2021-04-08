@@ -32,4 +32,15 @@ beep_loop:
       rts
       .code
 
-; Print address Y
+; Print address YA to console as $hhhh
+; Preserved: A, X, Y
+debug_addr:
+      pha
+      lda   #36         ; '$'
+      jsr   debug_char
+      tya
+      jsr   hex_byte
+      jmp   debug_byte_impl
+      .code
+      
+; Print byte A to co
