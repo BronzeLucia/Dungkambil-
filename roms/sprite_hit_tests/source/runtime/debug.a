@@ -43,4 +43,15 @@ debug_addr:
       jmp   debug_byte_impl
       .code
       
-; Print byte A to co
+; Print byte A to console as $hh
+; Preserved: A, X, Y
+debug_byte:
+      pha
+      lda   #36         ; '$'
+      jsr   debug_char
+debug_byte_impl:
+      pla
+      pha
+      jsr   hex_byte
+      lda   #32         ; ' '
+      jsr   d
