@@ -69,4 +69,9 @@ hex_byte:
       and   #$0f
 nybble:
       cmp   #10
-      bcc   no
+      bcc   not_letter
+      adc   #6          ; relies on carry being set
+not_letter:
+      adc   #$30
+      jmp   debug_char_no_wait
+      .code
