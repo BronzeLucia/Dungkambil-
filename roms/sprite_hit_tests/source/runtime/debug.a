@@ -54,4 +54,19 @@ debug_byte_impl:
       pha
       jsr   hex_byte
       lda   #32         ; ' '
-      jsr   d
+      jsr   debug_char_no_wait
+      pla
+      rts
+      
+hex_byte:
+      pha
+      lsr   a
+      lsr   a
+      lsr   a
+      lsr   a
+      jsr   nybble
+      pla
+      and   #$0f
+nybble:
+      cmp   #10
+      bcc   no
