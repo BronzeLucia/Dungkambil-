@@ -19,4 +19,11 @@ delay_msec_:
       .code
 
 ; Delay for almost 'A / 10' milliseconds (A * 0.099453968 msec)
-; Preserv
+; Preserved: X, Y
+delay_01msec:
+      pha                     ; 3
+      lda   #18               ; 2
+      sec                     ; 2
+delay_01msec_:
+      nop                     ; 2
+      nop        
