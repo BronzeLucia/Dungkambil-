@@ -1,1 +1,9 @@
-; to do: delay loops that take only a single cou
+; to do: delay loops that take only a single count
+      
+; Delay for almost A milliseconds (A * 0.999009524 msec)
+; Preserved: X, Y
+delay_msec:
+      pha                     ; 3
+      lda   #253              ; 2
+      sec                     ; 2
+dela
