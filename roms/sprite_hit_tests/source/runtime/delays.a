@@ -6,4 +6,10 @@ delay_msec:
       pha                     ; 3
       lda   #253              ; 2
       sec                     ; 2
-dela
+delay_msec_:
+      nop                     ; 2
+      adc   #-2               ; 2
+      bne   delay_msec_       ; 3
+                              ; -1
+      pla                     ; 4
+      clc  
