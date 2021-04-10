@@ -12,4 +12,11 @@ delay_msec_:
       bne   delay_msec_       ; 3
                               ; -1
       pla                     ; 4
-      clc  
+      clc                     ; 2
+      adc   #-1               ; 2
+      bne   delay_msec        ; 3
+      rts
+      .code
+
+; Delay for almost 'A / 10' milliseconds (A * 0.099453968 msec)
+; Preserv
