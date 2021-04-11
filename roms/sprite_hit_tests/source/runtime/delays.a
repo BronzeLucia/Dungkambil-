@@ -32,4 +32,17 @@ delay_01msec_:
                               ; -1
       pla                     ; 4
       clc                     ; 2
-      adc   #-1          
+      adc   #-1               ; 2
+      bne   delay_01msec      ; 3
+      rts
+      .code
+
+; Delay n clocks
+; Preserved: P, A, X, Y
+delay_32:   nop
+delay_30:   nop
+delay_28:   nop
+delay_26:   nop
+delay_24:   nop
+delay_22:   nop
+de
