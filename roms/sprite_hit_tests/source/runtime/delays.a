@@ -26,4 +26,10 @@ delay_01msec:
       sec                     ; 2
 delay_01msec_:
       nop                     ; 2
-      nop        
+      nop                     ; 2
+      adc   #-2               ; 2
+      bne   delay_01msec_     ; 3
+                              ; -1
+      pla                     ; 4
+      clc                     ; 2
+      adc   #-1          
