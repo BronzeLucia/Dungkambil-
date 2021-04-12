@@ -45,4 +45,17 @@ delay_28:   nop
 delay_26:   nop
 delay_24:   nop
 delay_22:   nop
-de
+delay_20:   nop
+delay_18:   nop
+delay_16:   nop
+delay_14:   nop
+delay_12:   rts
+
+delay_33:   nop
+delay_31:   nop
+delay_29:   nop
+delay_27:   nop
+delay_25:   nop
+delay_23:   nop
+delay_21:   nop
+delay_1
