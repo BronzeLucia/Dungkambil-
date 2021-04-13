@@ -82,4 +82,13 @@ delay_ya5:
 delay_ya4:
       .db   $a2         ; 1 ldx #imm
 delay_ya3:
-      .db   $a2    
+      .db   $a2         ; 1 ldx #imm
+delay_ya2:
+      .db   $a2         ; 1 ldx #imm
+delay_ya1:
+      .db   $a6         ; 1 ldx zp
+delay_ya0:
+      nop               ; 2
+delay_ya:
+                        ; 2 lda #
+                        
