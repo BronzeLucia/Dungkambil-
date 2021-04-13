@@ -58,4 +58,12 @@ delay_27:   nop
 delay_25:   nop
 delay_23:   nop
 delay_21:   nop
-delay_1
+delay_19:   nop
+delay_17:   beq   +     ; 5
+:           bne   +
+:           rts         ; 6
+      .code
+      
+; Delay (5 * A + 6) * Y + 7 + n clocks
+delay_ya11:
+      .db   $a2         ; 1 ldx #i
