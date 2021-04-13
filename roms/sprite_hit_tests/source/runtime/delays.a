@@ -74,4 +74,12 @@ delay_ya9:
 delay_ya8:
       .db   $a2         ; 1 ldx #imm
 delay_ya7:
-   
+      .db   $a2         ; 1 ldx #imm
+delay_ya6:
+      .db   $a2         ; 1 ldx #imm
+delay_ya5:
+      .db   $a2         ; 1 ldx #imm
+delay_ya4:
+      .db   $a2         ; 1 ldx #imm
+delay_ya3:
+      .db   $a2    
