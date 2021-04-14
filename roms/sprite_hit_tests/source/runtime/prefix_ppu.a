@@ -1,0 +1,36 @@
+
+      .include "validation.a"
+      .include "ppu_sync.a"
+      
+      .default palette = default_palette
+      .default tiles = default_tiles
+
+      .code
+begin_ppu_test:
+      lda   #40
+      jsr   delay_msec
+      jsr   wait_vbl
+      jsr   disable_ppu
+      jsr   clear_vram
+      jsr   clear_sprites
+      rts
+      
+      .code
+default_palette:
+      .db   $0f,$01,$02,$39
+      .db   $0f,$03,$04,$38
+      .db   $0f,$05,$06,$38
+      .db   $0f,$11,$12,$38
+      
+      .db   $0f,$32,$32,$21
+      .db   $0f,$32,$32,$32
+      .db   $0f,$32,$32,$32
+      .db   $0f,$32,$32,$32
+
+      .code
+default_tiles:
+      .db   $00,$00,$00,$00,$00,$00,$00,$00
+      .db   $00,$00,$00,$00,$00,$00,$00,$00
+
+      .db   $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff
+      .db   $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff

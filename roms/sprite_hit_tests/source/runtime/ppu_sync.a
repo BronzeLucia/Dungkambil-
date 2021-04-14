@@ -83,3 +83,43 @@ sync_ppu_align2_30:
       ldy   #28         ; 29726 delay
       lda   #211        
       jsr   delay_ya1
+      
+      pla               ; 16
+      tay
+      pla
+      tax
+      pla
+      
+      rts               ; 6
+      .code
+      
+sync_ppu_align1_30:
+      jsr   sync_ppu_align2_30
+      ldy   #86         ; 29775 delay
+      lda   #68         
+      jsr   delay_ya2
+      rts
+      .code
+
+sync_ppu_align1_31:
+      jsr   sync_ppu_align2_30
+      ldy   #86         ; 29774 delay
+      lda   #68         
+      jsr   delay_ya1
+      rts
+      .code
+
+sync_ppu_align0_30:
+      jsr   sync_ppu_align1_30
+      ldy   #86         ; 29774 delay
+      lda   #68         
+      jsr   delay_ya1
+      rts
+      .code
+
+sync_ppu_20:
+      jsr   sync_ppu_align2_30
+      nop               ; 4
+      nop
+      rts               ; 6
+      .code
