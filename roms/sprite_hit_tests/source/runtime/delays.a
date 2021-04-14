@@ -91,4 +91,10 @@ delay_ya0:
       nop               ; 2
 delay_ya:
                         ; 2 lda #
-                        
+                        ; 2 ldy #
+                        ; 6 jsr
+      tax               ; *2
+delay_yax:
+      dex               ; **2
+      bne   delay_yax   ; **3
+                        ; *-1
