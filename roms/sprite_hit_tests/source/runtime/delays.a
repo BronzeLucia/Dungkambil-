@@ -98,3 +98,8 @@ delay_yax:
       dex               ; **2
       bne   delay_yax   ; **3
                         ; *-1
+      dey               ; *2
+      bne   delay_ya    ; *3
+                        ; -1
+      rts               ; 6
+      .code
