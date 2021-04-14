@@ -1,0 +1,6 @@
+; Build as standalone NES ROM using console for output
+
+      .include "runtime_rom_common.a"
+      
+patch_reset_then_wait:
+ex
