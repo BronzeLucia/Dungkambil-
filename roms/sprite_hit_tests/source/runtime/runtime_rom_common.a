@@ -2,4 +2,17 @@
       .include "delays.a"
       .include "console.a"
       .include "debug.a"
+      .include "ppu_util.a"
       
+console_ready = $7f1
+
+debug_char:
+      pha
+      lda   #$a5
+      cmp   console_ready
+      beq   +
+      sta   console_ready
+      txa
+      pha
+      tya
+      pha
