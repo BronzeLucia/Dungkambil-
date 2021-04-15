@@ -16,3 +16,16 @@ debug_char:
       pha
       tya
       pha
+      jsr   init_console
+      pla
+      tay
+      pla
+      tax
+:     pla
+      jmp   print_char
+      
+debug_newline:
+      jsr   console_newline
+      jmp   console_newline
+      
+debug_ch
