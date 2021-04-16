@@ -28,4 +28,16 @@ debug_newline:
       jsr   console_newline
       jmp   console_newline
       
-debug_ch
+debug_char_no_wait:
+      jmp   print_char_no_wait
+      
+init_runtime:
+clear_console_ready:
+      lda   #0
+      sta   console_ready
+      rts
+
+forever:
+      sei               ; disable interrupts
+      lda   #0
+      sta   $2000
