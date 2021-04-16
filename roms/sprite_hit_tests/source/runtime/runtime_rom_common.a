@@ -41,3 +41,5 @@ forever:
       sei               ; disable interrupts
       lda   #0
       sta   $2000
+      jsr   clear_console_ready
+      jmp   exit
