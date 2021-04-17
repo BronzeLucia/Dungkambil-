@@ -17,3 +17,13 @@ reset:
       jsr   delay_msec
       
       jsr   wait_vbl
+      lda   #0
+      sta   $2000
+      sta   $2001
+      
+      lda   #2;) VRAM reads should be delayed in a buffer
+      sta   result
+      lda   #$00
+      jsr   set_vram_pos
+      lda   #$12
+    
