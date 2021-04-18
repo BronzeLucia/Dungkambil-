@@ -26,4 +26,14 @@ reset:
       lda   #$00
       jsr   set_vram_pos
       lda   #$12
-    
+      sta   $2007
+      lda   #$34
+      sta   $2007
+      lda   #$00
+      jsr   set_vram_pos
+      lda   $2007
+      lda   $2007
+      cmp   #$34
+      jsr   error_if_eq
+      
+      lda   #3;) 
