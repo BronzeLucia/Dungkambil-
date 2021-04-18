@@ -45,3 +45,12 @@ reset:
       lda   #$00
       jsr   set_vram_pos
       lda   $2007
+      lda   $2007
+      cmp   #$56
+      jsr   error_if_ne
+      
+      lda   #4;) Read buffer shouldn't be affected by VRAM write
+      sta   result
+      lda   #$00
+      jsr   set_vram_pos
+     
