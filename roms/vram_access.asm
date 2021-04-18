@@ -36,4 +36,12 @@ reset:
       cmp   #$34
       jsr   error_if_eq
       
-      lda   #3;) 
+      lda   #3;) Basic Write/read doesn't work
+      sta   result
+      lda   #$00
+      jsr   set_vram_pos
+      lda   #$56
+      sta   $2007
+      lda   #$00
+      jsr   set_vram_pos
+      lda   $2007
