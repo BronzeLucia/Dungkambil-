@@ -79,4 +79,9 @@ reset:
       lda   #$00
       sta   $2006
       lda   #$34
-      sta   $2007  
+      sta   $2007       ; shouldn't affect buffer
+      lda   #$01        ; change back to non-palette addr to enable buffer
+      jsr   set_vram_pos
+      lda   $2007
+      cmp   #$9a
+      jsr   error_if
