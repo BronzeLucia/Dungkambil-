@@ -61,4 +61,13 @@ reset:
       lda   $2007       ; buffer now contains $78
       lda   #$12
       sta   $2007       ; shouldn't affect buffer
-   
+      lda   $2007
+      cmp   #$78
+      jsr   error_if_ne
+      
+      lda   #5;) Read buffer shouldn't be affected by palette write
+      sta   result
+      lda   #$00
+      jsr   set_vram_pos
+      lda   #$9a
+      sta
