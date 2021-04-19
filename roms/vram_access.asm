@@ -70,4 +70,13 @@ reset:
       lda   #$00
       jsr   set_vram_pos
       lda   #$9a
-      sta
+      sta   $2007
+      lda   #$00
+      jsr   set_vram_pos
+      lda   $2007       ; buffer now contains $9a
+      lda   #$3f
+      sta   $2006
+      lda   #$00
+      sta   $2006
+      lda   #$34
+      sta   $2007  
