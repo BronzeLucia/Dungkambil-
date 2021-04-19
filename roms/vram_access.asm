@@ -53,4 +53,12 @@ reset:
       sta   result
       lda   #$00
       jsr   set_vram_pos
-     
+      lda   #$78
+      sta   $2007
+      lda   #$00
+      jsr   set_vram_pos
+      lda   #$00
+      lda   $2007       ; buffer now contains $78
+      lda   #$12
+      sta   $2007       ; shouldn't affect buffer
+   
