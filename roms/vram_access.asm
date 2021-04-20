@@ -84,4 +84,14 @@ reset:
       jsr   set_vram_pos
       lda   $2007
       cmp   #$9a
-      jsr   error_if
+      jsr   error_if_ne
+      
+      lda   #6;) Palette read should also read VRAM into read buffer
+      sta   result
+      lda   #$12
+      jsr   set_vram_pos
+      lda   #$9a
+      sta   $2007
+      lda   $2007
+      lda   #$3f
+      sta   
