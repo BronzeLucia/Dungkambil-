@@ -99,4 +99,13 @@ reset:
       sta   $2006
       lda   $2007       ; fills buffer with VRAM hidden by palette 
       lda   #$13        ; change back to non-palette addr to enable buffer
-      jsr   set_
+      jsr   set_vram_pos
+      lda   $2007
+      cmp   #$9a
+      jsr   error_if_ne
+      
+      lda   #7;) "Shadow" VRAM read unaffected by palette mirroring
+      sta   result
+      lda   #$04
+      jsr   set_vram_pos
+  
