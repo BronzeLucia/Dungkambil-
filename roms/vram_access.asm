@@ -94,4 +94,9 @@ reset:
       sta   $2007
       lda   $2007
       lda   #$3f
-      sta   
+      sta   $2006
+      lda   #$12
+      sta   $2006
+      lda   $2007       ; fills buffer with VRAM hidden by palette 
+      lda   #$13        ; change back to non-palette addr to enable buffer
+      jsr   set_
