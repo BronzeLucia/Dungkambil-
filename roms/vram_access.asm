@@ -118,4 +118,10 @@ reset:
       sta   $2006
       lda   #$04
       sta   $2006
-      lda   $2007       ; fil
+      lda   $2007       ; fills buffer with VRAM hidden by palette 
+      lda   #$13        ; change back to non-palette addr to enable buffer
+      jsr   set_vram_pos
+      lda   $2007
+      cmp   #$12
+      jsr   error_if_ne
+      lda
