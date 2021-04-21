@@ -124,4 +124,11 @@ reset:
       lda   $2007
       cmp   #$12
       jsr   error_if_ne
-      lda
+      lda   #$34
+      sta   $2007
+      lda   #$3f
+      sta   $2006
+      lda   #$14
+      sta   $2006
+      lda   $2007       ; fills buffer with VRAM hidden by palette 
+      lda   #$13        
