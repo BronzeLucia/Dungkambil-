@@ -108,4 +108,14 @@ reset:
       sta   result
       lda   #$04
       jsr   set_vram_pos
-  
+      lda   #$12
+      sta   $2007
+      lda   #$14
+      jsr   set_vram_pos
+      lda   #$34
+      sta   $2007
+      lda   #$3f
+      sta   $2006
+      lda   #$04
+      sta   $2006
+      lda   $2007       ; fil
