@@ -138,4 +138,6 @@ reset:
       jsr   error_if_ne
       
       lda   #1;) Tests passed
-      sta 
+      sta   result
+      jmp   report_final_result
+      
