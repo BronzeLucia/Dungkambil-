@@ -6,4 +6,4 @@ var app = connect();
 app.use(serveStatic(__dirname));
 app.listen(3334);
 
-console.l
+console.log('open localhost:3334');
