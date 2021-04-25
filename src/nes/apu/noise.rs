@@ -5,4 +5,14 @@ use nes::types::{Data, Addr};
 pub struct Noise {
     envelope_generator_counter: usize,
     envelope_rate: usize,
-    envelope
+    envelope_volume: usize,
+    envelope_enable: bool,
+    is_length_counter_enable: bool,
+    length_counter: usize,
+
+    divider_for_frequency: usize,
+    frequency: usize,
+    enable: bool,
+}
+
+extern "C
