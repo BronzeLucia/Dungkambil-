@@ -15,4 +15,15 @@ pub struct Noise {
     enable: bool,
 }
 
-extern "C
+extern "C" {
+    fn set_noise_frequency(freq: f32);
+    fn set_noise_volume(volume: f32);
+    fn stop_noise();
+    fn start_noise();
+// fn close_noise();
+}
+
+impl Noise {
+    pub fn new() -> Self {
+        Noise {
+   
