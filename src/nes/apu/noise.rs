@@ -26,4 +26,9 @@ extern "C" {
 impl Noise {
     pub fn new() -> Self {
         Noise {
-   
+            envelope_generator_counter: 0,
+            envelope_rate: 0x0F,
+            envelope_volume: 0x0F,
+            envelope_enable: false,
+
+            is_length
