@@ -31,4 +31,13 @@ impl Noise {
             envelope_volume: 0x0F,
             envelope_enable: false,
 
-            is_length
+            is_length_counter_enable: false,
+            length_counter: 0,
+            divider_for_frequency: 1,
+            frequency: 0,
+            enable: false,
+        }
+    }
+
+    pub fn enable(&mut self) {
+     
