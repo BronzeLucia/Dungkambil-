@@ -40,4 +40,15 @@ impl Noise {
     }
 
     pub fn enable(&mut self) {
-     
+        self.enable = true;
+        self.start();
+    }
+
+    pub fn disable(&mut self) {
+        self.enable = false;
+        self.stop();
+    }
+
+
+    fn get_volume(&self) -> f32 {
+        let vol = if
