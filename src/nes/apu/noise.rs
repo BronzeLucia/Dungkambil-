@@ -51,4 +51,13 @@ impl Noise {
 
 
     fn get_volume(&self) -> f32 {
-        let vol = if
+        let vol = if self.envelope_enable {
+            self.envelope_volume
+        } else {
+            self.envelope_rate
+        };
+        vol as f32 / (16.0 / GROBAL_GAIN)
+    }
+
+    pub fn update_envelope(&mut self) {
+     
