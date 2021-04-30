@@ -82,4 +82,8 @@ impl Noise {
     }
 
     // Length counter
-    // When clocked by the frame counter, the length counter is decreme
+    // When clocked by the frame counter, the length counter is decremented except when:
+    // The length counter is 0, or The halt flag is set
+    pub fn update_counter(&mut self) {
+        if self.is_length_counter_enable && self.length_counter > 0 {
+            self.length
