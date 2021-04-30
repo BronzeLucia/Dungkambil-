@@ -64,4 +64,13 @@ impl Noise {
         if self.envelope_generator_counter <= 0 {
             self.envelope_generator_counter = self.envelope_rate;
             if self.envelope_volume > 0 {
- 
+                self.envelope_volume -= 1;
+            } else {
+                self.stop();
+                self.envelope_volume = 0x0F;
+            }
+        }
+        self.set_volume();
+    }
+
+    pub fn 
