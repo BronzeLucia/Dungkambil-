@@ -73,4 +73,13 @@ impl Noise {
         self.set_volume();
     }
 
-    pub fn 
+    pub fn start(&self) {
+        unsafe { start_noise() };
+    }
+
+    pub fn stop(&self) {
+        unsafe { stop_noise() };
+    }
+
+    // Length counter
+    // When clocked by the frame counter, the length counter is decreme
