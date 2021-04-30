@@ -60,4 +60,8 @@ impl Noise {
     }
 
     pub fn update_envelope(&mut self) {
-     
+        self.envelope_generator_counter -= 1;
+        if self.envelope_generator_counter <= 0 {
+            self.envelope_generator_counter = self.envelope_rate;
+            if self.envelope_volume > 0 {
+ 
