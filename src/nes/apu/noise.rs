@@ -86,4 +86,16 @@ impl Noise {
     // The length counter is 0, or The halt flag is set
     pub fn update_counter(&mut self) {
         if self.is_length_counter_enable && self.length_counter > 0 {
-            self.length
+            self.length_counter -= 1;
+            if self.length_counter == 0 {
+                self.stop();
+            }
+        }
+
+    }
+
+    pub fn has_count_end(&self) -> bool {
+        self.length_counter == 0
+    }
+
+    fn 
