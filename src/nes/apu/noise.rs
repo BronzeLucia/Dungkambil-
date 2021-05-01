@@ -98,4 +98,10 @@ impl Noise {
         self.length_counter == 0
     }
 
-    fn 
+    fn set_volume(&self) {
+        unsafe { set_noise_volume(self.get_volume()) }
+    }
+
+    fn set_frequency(&self, data: Data) {
+        unsafe {
+            set_noise_frequency(CPU_CLOCK as f32 
