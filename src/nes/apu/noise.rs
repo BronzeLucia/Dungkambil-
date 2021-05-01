@@ -104,4 +104,11 @@ impl Noise {
 
     fn set_frequency(&self, data: Data) {
         unsafe {
-            set_noise_frequency(CPU_CLOCK as f32 
+            set_noise_frequency(CPU_CLOCK as f32 /
+                                NOISE_TIMER_PERIOD_TABLE[data as usize & 0xF] as f32 /
+                                2f32)
+        }
+    }
+
+    pub fn write(&mut self, addr: Addr, data: Data) {
+        match ad
