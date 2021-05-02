@@ -122,3 +122,8 @@ impl Noise {
                 // this.isShortPeriod = !!(data & 0x80);
                 self.set_frequency(data);
             }    
+            0x03 => {
+                if self.is_length_counter_enable {
+                    self.length_counter = COUNTER_TABLE[(data as usize & 0xF8) >> 3] as usize;
+                }
+                self.envelope_gener
