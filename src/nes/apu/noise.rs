@@ -115,4 +115,10 @@ impl Noise {
             0x00 => {
                 self.envelope_enable = (data & 0x10) == 0;
                 self.envelope_rate = data as usize & 0xF;
-                self.is_length_counter_enab
+                self.is_length_counter_enable = data & 0x20 == 0x00;
+                self.set_volume();
+            }
+            0x02 => {
+                // this.isShortPeriod = !!(data & 0x80);
+                self.set_frequency(data);
+            }    
