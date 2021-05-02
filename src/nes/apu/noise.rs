@@ -111,4 +111,8 @@ impl Noise {
     }
 
     pub fn write(&mut self, addr: Addr, data: Data) {
-        match ad
+        match addr {
+            0x00 => {
+                self.envelope_enable = (data & 0x10) == 0;
+                self.envelope_rate = data as usize & 0xF;
+                self.is_length_counter_enab
