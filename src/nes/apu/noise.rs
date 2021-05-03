@@ -126,4 +126,8 @@ impl Noise {
                 if self.is_length_counter_enable {
                     self.length_counter = COUNTER_TABLE[(data as usize & 0xF8) >> 3] as usize;
                 }
-                self.envelope_gener
+                self.envelope_generator_counter = self.envelope_rate;
+                self.envelope_volume = 0x0F;
+                if self.enable {
+                    self.set_volume();
+                    se
