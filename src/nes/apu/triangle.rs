@@ -50,3 +50,98 @@ impl Triangle {
             set_oscillator_volume(self.index, 0.0);
         };
     }
+
+    pub fn enable(&mut self) {
+        self.enable = true;
+        self.start();
+    }
+
+    pub fn disable(&mut self) {
+        self.enable = false;
+        self.stop();
+    }
+
+    pub fn stop(&mut self) {
+        if self.playing {
+            self.playing = false;
+            self.stop_oscillator();
+        }
+    }
+
+    // Length counter
+    // When clocked by the frame counter, the length counter is decremented except when:
+    // The length counter is 0, or The halt flag is set
+    pub fn update_counter(&mut self) {
+        if self.is_length_counter_enable && self.length_counter > 0 {
+            self.length_counter -= 1;
+        }
+        if self.linear_counter > 0 {
+            self.linear_counter -= 1;
+        }
+        if !self.is_length_counter_enable {
+            return;
+        }
+        if self.length_counter == 0 || self.linear_counter == 0 {
+            self.stop();
+        }
+    }
+
+    fn change_frequency(&self) {
+        unsafe {
+            change_oscillator_frequency(self.index, self.frequency);
+        }
+    }
+
+    pub fn start(&mut self) {
+        if !self.playing {
+            self.playing = true;
+            unsafe {
+                start_oscillator(self.index);
+                set_oscillator_frequency(self.index, self.frequency);
+            };
+        } else {
+            self.change_frequency();
+        }
+    }
+
+    pub fn has_count_end(&self) -> bool {
+        self.length_counter == 0
+    }
+
+    fn set_volume(&self) {
+        unsafe { set_oscillator_volume(self.index, self.get_volume()) }
+    }
+
+    pub fn write(&mut self, addr: Addr, data: Data) {
+        match addr {
+            0x00 => {
+                self.is_length_counter_enable = data & 0x80 == 0;
+                self.linear_counter = data as usize & 0x7F;
+            }
+            0x02 => {
+                self.divider_for_frequency &= 0x700;
+                self.divider_for_frequency |= data as usize;
+                self.update_frequency();
+                self.change_frequency();
+            }    
+            0x03 => {
+                // Programmable timer, length counter
+                self.divider_for_frequency &= 0xFF;
+                self.divider_for_frequency |= (data as usize & 0x7) << 8;
+                if self.is_length_counter_enable {
+                    self.length_counter = COUNTER_TABLE[(data & 0xF8) as usize >> 3] as usize / 2;
+                }
+                self.update_frequency();
+                self.set_volume();
+                if self.enable {
+                    self.start();
+                }
+            }                        
+            _ => (),
+        }
+    }
+
+    fn update_frequency(&mut self) {
+        self.frequency = CPU_CLOCK / ((self.divider_for_frequency + 1) * 32) as usize;
+    }
+}
