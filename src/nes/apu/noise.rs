@@ -130,4 +130,10 @@ impl Noise {
                 self.envelope_volume = 0x0F;
                 if self.enable {
                     self.set_volume();
-                    se
+                    self.start();
+                }
+            }                        
+            _ => (),
+        }
+    }
+}
