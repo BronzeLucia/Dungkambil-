@@ -21,4 +21,18 @@ export default class Oscillator {
     };
 
     this.setVolume(0);
-    this.setPu
+    this.setPulseWidth(0.5);
+    this.playing = false;
+  }
+
+  start() {
+    if (this.playing) {
+      this.stop();
+    }
+    this.playing = true;
+    this.oscillator.start(0);
+  }
+
+  stop() {
+    if (this.playing) {
+      this.setVolum
