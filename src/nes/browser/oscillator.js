@@ -35,4 +35,16 @@ export default class Oscillator {
 
   stop() {
     if (this.playing) {
-      this.setVolum
+      this.setVolume(0);
+      this.playing = false;
+      this.oscillator.stop(this.context.currentTime);
+      this.oscillator = this.createOscillator();
+      this.setPulseWidth(0.5);
+    }
+  }
+
+  close() {
+    this.context.close();
+  }
+
+  createOscill
