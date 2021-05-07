@@ -54,4 +54,13 @@ export default class Oscillator {
     if (options.harmonics) {
       const waveform = this.context.createPeriodicWave(
         new Float32Array(options.harmonics.real),
-        new Float32Array(options.harmonic
+        new Float32Array(options.harmonics.imag)
+      )
+      oscillator.setPeriodicWave(waveform);
+    }
+
+    this.gain = this.context.createGain();
+    this.gain.gain.value = 0.01;
+    oscillator.connect(this.gain);
+    this.gain.connect(this.context.destination);
+   
