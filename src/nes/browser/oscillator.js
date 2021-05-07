@@ -51,3 +51,7 @@ export default class Oscillator {
     const oscillator = this.context.createOscillator();
     if (options.kind) oscillator.type = options.kind;
     if (options.frequency) oscillator.frequency.value = options.frequency;
+    if (options.harmonics) {
+      const waveform = this.context.createPeriodicWave(
+        new Float32Array(options.harmonics.real),
+        new Float32Array(options.harmonic
