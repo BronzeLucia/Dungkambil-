@@ -71,4 +71,12 @@ export default class Oscillator {
   }
 
   setFrequency(frequency) {
-    this.oscillator.freq
+    this.oscillator.frequency.value = frequency;
+  }
+
+  changeFrequency(frequency) {
+    this.oscillator.frequency.setValueAtTime(frequency, this.context.currentTime)
+  }
+
+  setVolume(volume) {
+    volume = Math
