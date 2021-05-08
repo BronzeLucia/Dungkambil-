@@ -63,4 +63,12 @@ export default class Oscillator {
     this.gain.gain.value = 0.01;
     oscillator.connect(this.gain);
     this.gain.connect(this.context.destination);
-   
+    return oscillator;
+  }
+
+  setPulseWidth(pulseWidth) {
+    this.oscillator.setPeriodicWave(this.waves[`${pulseWidth}`]);
+  }
+
+  setFrequency(frequency) {
+    this.oscillator.freq
