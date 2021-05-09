@@ -79,4 +79,7 @@ export default class Oscillator {
   }
 
   setVolume(volume) {
-    volume = Math
+    volume = Math.max(0, Math.min(1, volume));
+    this.gain.gain.value = volume;
+  }
+}
