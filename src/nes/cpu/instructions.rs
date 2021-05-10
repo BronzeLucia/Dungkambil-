@@ -13,4 +13,12 @@ pub fn process_nmi<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     registers.set_PC(next);
 }
 
-pub fn lda<T: CpuRegisters, U: CpuBus>(operand
+pub fn lda<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let computed = bus.read(operand);
+    registers
+        .set_A(computed)
+        .update_negative_by(computed)
+        .update_zero_by(computed);
+}
+
+pub fn lda_imm<T: Cpu
