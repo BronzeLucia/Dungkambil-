@@ -21,4 +21,11 @@ pub fn lda<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
         .update_zero_by(computed);
 }
 
-pub fn lda_imm<T: Cpu
+pub fn lda_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    registers
+        .set_A(operand as Data)
+        .update_negative_by(operand as Data)
+        .update_zero_by(operand as Data);
+}
+
+pub fn ldx<T: CpuRegisters, U: C
