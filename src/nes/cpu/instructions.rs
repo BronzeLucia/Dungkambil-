@@ -28,4 +28,9 @@ pub fn lda_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
         .update_zero_by(operand as Data);
 }
 
-pub fn ldx<T: CpuRegisters, U: C
+pub fn ldx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let computed = bus.read(operand);
+    registers
+        .set_X(computed)
+        .update_negative_by(computed)
+        .update_zero_by(
