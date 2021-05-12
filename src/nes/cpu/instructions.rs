@@ -54,4 +54,12 @@ pub fn ldy<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 pub fn ldy_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
     registers
         .set_Y(operand as Data)
-        .update_negative_by(operand as Da
+        .update_negative_by(operand as Data)
+        .update_zero_by(operand as Data);
+}
+
+pub fn sta<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    bus.write(operand, registers.get_A());
+}
+
+pub fn stx<T: CpuRegisters, U: CpuBus>(
