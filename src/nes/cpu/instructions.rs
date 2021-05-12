@@ -33,4 +33,11 @@ pub fn ldx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     registers
         .set_X(computed)
         .update_negative_by(computed)
-        .update_zero_by(
+        .update_zero_by(computed);
+}
+
+pub fn ldx_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    registers
+        .set_X(operand as Data)
+        .update_negative_by(operand as Data)
+        .update_zero_by(operan
