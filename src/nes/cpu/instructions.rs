@@ -47,4 +47,11 @@ pub fn ldy<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     let computed = bus.read(operand);
     registers
         .set_Y(computed)
-        .update_negative_by(com
+        .update_negative_by(computed)
+        .update_zero_by(computed);
+}
+
+pub fn ldy_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    registers
+        .set_Y(operand as Data)
+        .update_negative_by(operand as Da
