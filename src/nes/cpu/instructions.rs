@@ -62,4 +62,9 @@ pub fn sta<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     bus.write(operand, registers.get_A());
 }
 
-pub fn stx<T: CpuRegisters, U: CpuBus>(
+pub fn stx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    bus.write(operand, registers.get_X());
+}
+
+pub fn sty<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    bus.write(operand, registers
