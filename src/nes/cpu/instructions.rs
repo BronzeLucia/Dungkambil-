@@ -67,4 +67,15 @@ pub fn stx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 }
 
 pub fn sty<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
-    bus.write(operand, registers
+    bus.write(operand, registers.get_Y());
+}
+
+pub fn txa<T: CpuRegisters>(registers: &mut T) {
+    let x = registers.get_X();
+    registers
+        .set_A(x)
+        .update_negative_by(x)
+        .update_zero_by(x);
+}
+
+pub fn tya<T:
