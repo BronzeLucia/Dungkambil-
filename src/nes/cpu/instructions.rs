@@ -103,4 +103,13 @@ pub fn tax<T: CpuRegisters>(registers: &mut T) {
     let acc = registers.get_A();
     registers
         .set_X(acc)
-        
+        .update_negative_by(acc)
+        .update_zero_by(acc);
+}
+
+pub fn tsx<T: CpuRegisters>(registers: &mut T) {
+    let sp = registers.get_SP();
+    registers
+        .set_X(sp)
+        .update_negative_by(sp)
+        .updat
