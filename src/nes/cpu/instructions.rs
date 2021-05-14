@@ -94,4 +94,13 @@ pub fn txs<T: CpuRegisters>(registers: &mut T) {
 pub fn tay<T: CpuRegisters>(registers: &mut T) {
     let acc = registers.get_A();
     registers
-        .se
+        .set_Y(acc)
+        .update_negative_by(acc)
+        .update_zero_by(acc);
+}
+
+pub fn tax<T: CpuRegisters>(registers: &mut T) {
+    let acc = registers.get_A();
+    registers
+        .set_X(acc)
+        
