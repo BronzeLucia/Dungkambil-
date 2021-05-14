@@ -86,4 +86,12 @@ pub fn tya<T: CpuRegisters>(registers: &mut T) {
         .update_zero_by(y);
 }
 
-pub fn txs<T: CpuRegisters>(re
+pub fn txs<T: CpuRegisters>(registers: &mut T) {
+    let x = registers.get_X();
+    registers.set_SP(x);
+}
+
+pub fn tay<T: CpuRegisters>(registers: &mut T) {
+    let acc = registers.get_A();
+    registers
+        .se
