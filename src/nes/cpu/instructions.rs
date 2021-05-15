@@ -120,4 +120,10 @@ pub fn php<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     push_status(registers, bus);
 }
 
-pub fn plp<T: CpuRegiste
+pub fn plp<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    registers.set_reserved(true);
+    let status = pop(registers, bus);
+    registers.set_P(status);
+}
+
+pub fn pha<T: CpuRegisters, U: CpuBus>(registers: &mut 
