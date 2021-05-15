@@ -112,4 +112,12 @@ pub fn tsx<T: CpuRegisters>(registers: &mut T) {
     registers
         .set_X(sp)
         .update_negative_by(sp)
-        .updat
+        .update_zero_by(sp);
+}
+
+pub fn php<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    registers.set_break(true);
+    push_status(registers, bus);
+}
+
+pub fn plp<T: CpuRegiste
