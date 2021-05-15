@@ -126,4 +126,12 @@ pub fn plp<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     registers.set_P(status);
 }
 
-pub fn pha<T: CpuRegisters, U: CpuBus>(registers: &mut 
+pub fn pha<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let acc = registers.get_A();
+    push(acc, registers, bus);
+}
+
+pub fn pla<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let v = pop(registers, bus);
+    registers
+        .set_A(v
