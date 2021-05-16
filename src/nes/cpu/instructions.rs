@@ -134,4 +134,10 @@ pub fn pha<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
 pub fn pla<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     let v = pop(registers, bus);
     registers
-        .set_A(v
+        .set_A(v)
+        .update_negative_by(v)
+        .update_zero_by(v);
+}
+
+pub fn adc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    let computed = (operand as u16) + registers.get_A() a
