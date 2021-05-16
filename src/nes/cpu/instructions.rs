@@ -140,4 +140,9 @@ pub fn pla<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
 }
 
 pub fn adc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
-    let computed = (operand as u16) + registers.get_A() a
+    let computed = (operand as u16) + registers.get_A() as u16 +
+                   bool_to_u8(registers.get_carry()) as u16;
+    let acc = registers.get_A();
+    registers
+        .set_overflow(!(((acc ^ (operand as Data)) & 0x80) != 0) &&
+                      (((acc ^ compute
