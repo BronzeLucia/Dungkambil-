@@ -155,4 +155,9 @@ pub fn adc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
 pub fn adc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
     let fetched = bus.read(operand);
     let computed = fetched as u16 + registers.get_A() as u16 +
-                   bool_to_u8(registers.get_carry()
+                   bool_to_u8(registers.get_carry()) as u16;
+    let acc = registers.get_A();
+    registers
+        .set_overflow(!(((acc ^ (fetched as Data)) & 0x80) != 0) &&
+                      (((acc ^ computed as Data) & 0x80)) != 0)
+        .update_
