@@ -145,4 +145,11 @@ pub fn adc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
     let acc = registers.get_A();
     registers
         .set_overflow(!(((acc ^ (operand as Data)) & 0x80) != 0) &&
-                      (((acc ^ compute
+                      (((acc ^ computed as Data) & 0x80)) != 0)
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(computed > 0xFF)
+        .set_A(computed as Data);
+}
+
+pub fn adc<T: CpuRegisters, U: CpuBu
