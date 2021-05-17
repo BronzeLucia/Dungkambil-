@@ -160,4 +160,10 @@ pub fn adc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     registers
         .set_overflow(!(((acc ^ (fetched as Data)) & 0x80) != 0) &&
                       (((acc ^ computed as Data) & 0x80)) != 0)
-        .update_
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(computed > 0xFF)
+        .set_A(computed as Data);
+}
+
+pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut 
