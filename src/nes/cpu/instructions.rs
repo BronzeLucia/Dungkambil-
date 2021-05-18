@@ -171,4 +171,8 @@ pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
                    bool_to_u8(!registers.get_carry()) as i16;
     let acc = registers.get_A();
     registers
-        .set_overflow((((acc ^ (opera
+        .set_overflow((((acc ^ (operand as Data)) & 0x80) != 0) &&
+                      (((acc ^ computed as Data) & 0x80)) != 0)
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(co
