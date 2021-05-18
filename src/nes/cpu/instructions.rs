@@ -166,4 +166,9 @@ pub fn adc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
         .set_A(computed as Data);
 }
 
-pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut 
+pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    let computed = registers.get_A() as i16 - (operand as i16) -
+                   bool_to_u8(!registers.get_carry()) as i16;
+    let acc = registers.get_A();
+    registers
+        .set_overflow((((acc ^ (opera
