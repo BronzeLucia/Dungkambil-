@@ -181,4 +181,8 @@ pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
 
 pub fn sbc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
     let fetched = bus.read(operand);
-    let computed =
+    let computed = registers.get_A() as i16 - fetched as i16 -
+                   bool_to_u8(!registers.get_carry()) as i16;
+    let acc = registers.get_A();
+    registers
+        .set_overflow((((acc ^ (fetched as Data)) & 0x80) != 
