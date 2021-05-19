@@ -175,4 +175,10 @@ pub fn sbc_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
                       (((acc ^ computed as Data) & 0x80)) != 0)
         .update_negative_by(computed as Data)
         .update_zero_by(computed as Data)
-        .set_carry(co
+        .set_carry(computed >= 0 as i16)
+        .set_A(computed as Data);
+}
+
+pub fn sbc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let computed =
