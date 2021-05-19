@@ -185,4 +185,8 @@ pub fn sbc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
                    bool_to_u8(!registers.get_carry()) as i16;
     let acc = registers.get_A();
     registers
-        .set_overflow((((acc ^ (fetched as Data)) & 0x80) != 
+        .set_overflow((((acc ^ (fetched as Data)) & 0x80) != 0) &&
+                      (((acc ^ computed as Data) & 0x80)) != 0)
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(computed >= 0 as 
