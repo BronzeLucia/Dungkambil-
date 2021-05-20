@@ -201,4 +201,8 @@ pub fn cpx_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
         .set_carry(computed >= 0 as i16);
 }
 
-pub fn cpx<T: CpuRegisters, U: CpuBus>(
+pub fn cpx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let computed = registers.get_X() as i16 - fetched as i16;
+    registers
+        .upd
