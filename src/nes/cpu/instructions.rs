@@ -211,4 +211,8 @@ pub fn cpx<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 }
 
 pub fn cpy_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
-    let computed = registers.
+    let computed = registers.get_Y() as i16 - (operand as i16);
+    registers
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(computed >= 0 as i1
