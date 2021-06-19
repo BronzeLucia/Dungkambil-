@@ -238,3 +238,10 @@ pub fn cmp_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
 pub fn cmp<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
     let fetched = bus.read(operand);
     let computed = (registers.get_A() as i16) - (fetched as i16);
+    registers
+        .update_negative_by(computed as Data)
+        .update_zero_by(computed as Data)
+        .set_carry(computed >= 0 as i16);
+}
+
+pub fn and_imm<T: CpuRegisters>(
