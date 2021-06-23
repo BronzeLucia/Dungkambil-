@@ -244,4 +244,12 @@ pub fn cmp<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
         .set_carry(computed >= 0 as i16);
 }
 
-pub fn and_imm<T: CpuRegisters>(
+pub fn and_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    let computed = registers.get_A() & (operand as u8);
+    registers
+        .update_negative_by(computed)
+        .update_zero_by(computed)
+        .set_A(computed);
+}
+
+p
