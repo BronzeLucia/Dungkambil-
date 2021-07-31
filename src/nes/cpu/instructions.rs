@@ -262,4 +262,11 @@ pub fn and<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 }
 
 pub fn eor_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
-    let computed =
+    let computed = registers.get_A() ^ (operand as u8);
+    registers
+        .update_negative_by(computed)
+        .update_zero_by(computed)
+        .set_A(computed);
+}
+
+pub fn eor<T: CpuRegister
