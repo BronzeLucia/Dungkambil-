@@ -274,4 +274,9 @@ pub fn eor<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     let computed = registers.get_A() ^ fetched;
     registers
         .update_negative_by(computed)
-   
+        .update_zero_by(computed)
+        .set_A(computed);
+}
+
+pub fn ora_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    let computed = registers.get_A() | (ope
