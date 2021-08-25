@@ -286,4 +286,13 @@ pub fn ora_imm<T: CpuRegisters>(operand: Word, registers: &mut T) {
         .set_A(computed);
 }
 
-pub fn ora<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut 
+pub fn ora<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let computed = registers.get_A() | fetched;
+    registers
+        .update_negative_by(computed)
+        .update_zero_by(computed)
+        .set_A(computed);
+}
+
+p
