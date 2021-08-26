@@ -295,4 +295,8 @@ pub fn ora<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
         .set_A(computed);
 }
 
-p
+pub fn bit<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let acc = registers.get_A();
+    registers
+        .update_negativ
