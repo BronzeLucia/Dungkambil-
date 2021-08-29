@@ -299,4 +299,10 @@ pub fn bit<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     let fetched = bus.read(operand);
     let acc = registers.get_A();
     registers
-        .update_negativ
+        .update_negative_by(fetched)
+        .update_zero_by(fetched & acc)
+        .set_overflow((fetched & 0x40) == 0x40);
+}
+
+pub fn asl_acc<T: CpuRegisters>(registers: &mut T) {
+    let acc = registers.get_A()
