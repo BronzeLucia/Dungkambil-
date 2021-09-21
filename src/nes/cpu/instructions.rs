@@ -314,4 +314,9 @@ pub fn asl_acc<T: CpuRegisters>(registers: &mut T) {
         .set_A(shifted);
 }
 
-pub fn asl<T: CpuRegisters, U
+pub fn asl<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let shifted = (fetched << 1) as u8;
+    registers
+        .set_carry(fetched & 0x80 == 0x80)
+        .updat
