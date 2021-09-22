@@ -326,4 +326,12 @@ pub fn asl<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 
 pub fn lsr_acc<T: CpuRegisters>(registers: &mut T) {
     let acc = registers.get_A();
-    let 
+    let shifted = (acc >> 1) as u8;
+    registers
+        .set_carry((acc & 0x01) == 0x01)
+        .update_negative_by(shifted)
+        .update_zero_by(shifted)
+        .set_A(shifted);
+}
+
+pub fn lsr<T: CpuRegisters, U: CpuBus>(ope
