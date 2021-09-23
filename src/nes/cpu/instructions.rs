@@ -334,4 +334,10 @@ pub fn lsr_acc<T: CpuRegisters>(registers: &mut T) {
         .set_A(shifted);
 }
 
-pub fn lsr<T: CpuRegisters, U: CpuBus>(ope
+pub fn lsr<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let shifted = (fetched >> 1) as u8;
+    registers
+        .set_carry(fetched & 0x01 == 0x01)
+        .update_negative_by(shifted)
+       
