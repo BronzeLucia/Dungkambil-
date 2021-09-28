@@ -340,4 +340,12 @@ pub fn lsr<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     registers
         .set_carry(fetched & 0x01 == 0x01)
         .update_negative_by(shifted)
-       
+        .update_zero_by(shifted);
+    bus.write(operand, shifted);
+}
+
+pub fn rol_acc<T: CpuRegisters>(registers: &mut T) {
+    let acc = registers.get_A();
+    let rotated = rotate_to_left(registers, acc);
+    registers
+    
