@@ -355,3 +355,10 @@ pub fn rol_acc<T: CpuRegisters>(registers: &mut T) {
 }
 
 pub fn rol<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let fetched = bus.read(operand);
+    let rotated = rotate_to_left(registers, fetched);
+    registers
+        .set_carry(fetched & 0x80 == 0x80)
+        .update_negative_by(rotated)
+        .update_zero_by(rotated);
+    bus
