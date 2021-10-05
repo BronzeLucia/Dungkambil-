@@ -379,4 +379,13 @@ pub fn ror<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     let rotated = rotate_to_right(registers, fetched);
     registers
         .set_carry(fetched & 0x01 == 0x01)
-        .update_negative
+        .update_negative_by(rotated)
+        .update_zero_by(rotated);
+    bus.write(operand, rotated);
+}
+
+pub fn inx<T: CpuRegisters>(registers: &mut T) {
+    let x = registers.get_X() + 1;
+    registers
+        .set_X(x)
+      
