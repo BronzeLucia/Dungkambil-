@@ -368,3 +368,10 @@ pub fn ror_acc<T: CpuRegisters>(registers: &mut T) {
     let acc = registers.get_A();
     let rotated = rotate_to_right(registers, acc);
     registers
+        .set_carry(acc & 0x01 == 0x01)
+        .update_negative_by(rotated)
+        .update_zero_by(rotated)
+        .set_A(rotated);
+}
+
+pub fn ror<T: CpuRegisters, U: CpuBus>(operand: Word, registers:
