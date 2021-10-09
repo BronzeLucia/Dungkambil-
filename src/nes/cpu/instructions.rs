@@ -388,4 +388,12 @@ pub fn inx<T: CpuRegisters>(registers: &mut T) {
     let x = registers.get_X() + 1;
     registers
         .set_X(x)
-      
+        .update_negative_by(x)
+        .update_zero_by(x);
+}
+
+pub fn iny<T: CpuRegisters>(registers: &mut T) {
+    let y = registers.get_Y() + 1;
+    registers
+        .set_Y(y)
+        .updat
