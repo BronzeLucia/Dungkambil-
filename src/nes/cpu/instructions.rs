@@ -396,4 +396,10 @@ pub fn iny<T: CpuRegisters>(registers: &mut T) {
     let y = registers.get_Y() + 1;
     registers
         .set_Y(y)
-        .updat
+        .update_negative_by(y)
+        .update_zero_by(y);
+}
+
+pub fn inc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let data = bus.read(operand) + 1 as u8;
+    registers.update_negat
