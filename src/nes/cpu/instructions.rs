@@ -402,4 +402,12 @@ pub fn iny<T: CpuRegisters>(registers: &mut T) {
 
 pub fn inc<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
     let data = bus.read(operand) + 1 as u8;
-    registers.update_negat
+    registers.update_negative_by(data).update_zero_by(data);
+    bus.write(operand, data);
+}
+
+pub fn dex<T: CpuRegisters>(registers: &mut T) {
+    let x = registers.get_X() as i8 - 1;
+    registers
+        .set_X(x as Data)
+        .update_negat
