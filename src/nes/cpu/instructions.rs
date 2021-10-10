@@ -410,4 +410,12 @@ pub fn dex<T: CpuRegisters>(registers: &mut T) {
     let x = registers.get_X() as i8 - 1;
     registers
         .set_X(x as Data)
+        .update_negative_by(x as Data)
+        .update_zero_by(x as Data);
+}
+
+pub fn dey<T: CpuRegisters>(registers: &mut T) {
+    let y = registers.get_Y() as i8 - 1;
+    registers
+        .set_Y(y as Data)
         .update_negat
