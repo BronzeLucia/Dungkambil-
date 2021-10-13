@@ -418,4 +418,11 @@ pub fn dey<T: CpuRegisters>(registers: &mut T) {
     let y = registers.get_Y() as i8 - 1;
     registers
         .set_Y(y as Data)
-        .update_negat
+        .update_negative_by(y as Data)
+        .update_zero_by(y as Data);
+}
+
+pub fn dec<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let data = bus.read(operand) as i8 - 1;
+    registers
+   
