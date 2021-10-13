@@ -425,4 +425,10 @@ pub fn dey<T: CpuRegisters>(registers: &mut T) {
 pub fn dec<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
     let data = bus.read(operand) as i8 - 1;
     registers
-   
+        .update_negative_by(data as Data)
+        .update_zero_by(data as Data);
+    bus.write(operand, data as Data);
+}
+
+pub fn clc<T: CpuRegisters>(registers: &mut T) {
+    registers.set_carry
