@@ -431,4 +431,15 @@ pub fn dec<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
 }
 
 pub fn clc<T: CpuRegisters>(registers: &mut T) {
-    registers.set_carry
+    registers.set_carry(false);
+}
+
+pub fn cli<T: CpuRegisters>(registers: &mut T) {
+    registers.set_interrupt(false);
+}
+
+pub fn clv<T: CpuRegisters>(registers: &mut T) {
+    registers.set_overflow(false);
+}
+
+pub
