@@ -442,4 +442,12 @@ pub fn clv<T: CpuRegisters>(registers: &mut T) {
     registers.set_overflow(false);
 }
 
-pub
+pub fn sec<T: CpuRegisters>(registers: &mut T) {
+    registers.set_carry(true);
+}
+
+pub fn sei<T: CpuRegisters>(registers: &mut T) {
+    registers.set_interrupt(true);
+}
+
+pub fn brk<T: CpuRegisters, U: CpuBus>(registers: &
