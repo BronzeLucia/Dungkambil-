@@ -450,4 +450,10 @@ pub fn sei<T: CpuRegisters>(registers: &mut T) {
     registers.set_interrupt(true);
 }
 
-pub fn brk<T: CpuRegisters, U: CpuBus>(registers: &
+pub fn brk<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let interrupt = registers.get_interrupt();
+    registers.inc_PC();
+    push_pc(registers, bus);
+    registers.set_break(true);
+    push_status(registers, bus);
+    regi
