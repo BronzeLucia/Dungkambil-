@@ -456,4 +456,13 @@ pub fn brk<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     push_pc(registers, bus);
     registers.set_break(true);
     push_status(registers, bus);
-    regi
+    registers.set_interrupt(true);
+    // Ignore interrupt when already set.
+    if !interrupt {
+        let fetched = bus.read_word(0xFFFE);
+        registers.set_PC(fetched);
+    }
+    registers.dec_PC();
+}
+
+pub fn jsr<T: Cpu
