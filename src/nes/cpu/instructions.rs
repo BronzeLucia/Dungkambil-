@@ -465,4 +465,8 @@ pub fn brk<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     registers.dec_PC();
 }
 
-pub fn jsr<T: Cpu
+pub fn jsr<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &mut U) {
+    let pc = registers.get_PC() - 1;
+    push((pc >> 8) as u8, registers, bus);
+    push(pc as u8, registers, bus);
+    registers.s
