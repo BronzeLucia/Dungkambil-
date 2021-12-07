@@ -484,4 +484,14 @@ pub fn rti<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
 
 pub fn rts<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     pop_pc(registers, bus);
-    reg
+    registers.inc_PC();
+}
+
+pub fn bcc<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if !registers.get_carry() {
+        branch(registers, operand);
+    }
+}
+
+pub fn bcs<T: CpuRegisters>(operand: Word, registers: &mut T) {
+ 
