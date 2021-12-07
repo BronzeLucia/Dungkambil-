@@ -469,4 +469,11 @@ pub fn jsr<T: CpuRegisters, U: CpuBus>(operand: Word, registers: &mut T, bus: &m
     let pc = registers.get_PC() - 1;
     push((pc >> 8) as u8, registers, bus);
     push(pc as u8, registers, bus);
-    registers.s
+    registers.set_PC(operand);
+}
+
+pub fn jmp<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    registers.set_PC(operand);
+}
+
+pub fn rti<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U
