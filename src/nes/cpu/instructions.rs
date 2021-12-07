@@ -476,4 +476,12 @@ pub fn jmp<T: CpuRegisters>(operand: Word, registers: &mut T) {
     registers.set_PC(operand);
 }
 
-pub fn rti<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U
+pub fn rti<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    pop_status(registers, bus);
+    pop_pc(registers, bus);
+    registers.set_reserved(true);
+}
+
+pub fn rts<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    pop_pc(registers, bus);
+    reg
