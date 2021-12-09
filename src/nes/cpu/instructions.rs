@@ -494,4 +494,11 @@ pub fn bcc<T: CpuRegisters>(operand: Word, registers: &mut T) {
 }
 
 pub fn bcs<T: CpuRegisters>(operand: Word, registers: &mut T) {
- 
+    if registers.get_carry() {
+        branch(registers, operand);
+    }
+}
+
+pub fn beq<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if registers.get_zero() {
+        branch(registers, op
