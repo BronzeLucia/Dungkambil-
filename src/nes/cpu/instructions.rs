@@ -501,4 +501,14 @@ pub fn bcs<T: CpuRegisters>(operand: Word, registers: &mut T) {
 
 pub fn beq<T: CpuRegisters>(operand: Word, registers: &mut T) {
     if registers.get_zero() {
-        branch(registers, op
+        branch(registers, operand);
+    }
+}
+
+pub fn bmi<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if registers.get_negative() {
+        branch(registers, operand);
+    }
+}
+
+pub fn bne<T: CpuRegister
