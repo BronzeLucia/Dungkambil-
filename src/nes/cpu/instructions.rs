@@ -511,4 +511,11 @@ pub fn bmi<T: CpuRegisters>(operand: Word, registers: &mut T) {
     }
 }
 
-pub fn bne<T: CpuRegister
+pub fn bne<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if !registers.get_zero() {
+        branch(registers, operand);
+    }
+}
+
+pub fn bpl<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if !registers.get_
