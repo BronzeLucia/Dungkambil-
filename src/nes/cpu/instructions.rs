@@ -529,4 +529,10 @@ pub fn bvs<T: CpuRegisters>(operand: Word, registers: &mut T) {
     }
 }
 
-pub fn b
+pub fn bvc<T: CpuRegisters>(operand: Word, registers: &mut T) {
+    if !registers.get_overflow() {
+        branch(registers, operand);
+    }
+}
+
+pub fn cld<T: CpuRegisters>(r
