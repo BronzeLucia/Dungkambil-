@@ -535,4 +535,12 @@ pub fn bvc<T: CpuRegisters>(operand: Word, registers: &mut T) {
     }
 }
 
-pub fn cld<T: CpuRegisters>(r
+pub fn cld<T: CpuRegisters>(registers: &mut T) {
+    registers.set_decimal(false);
+}
+
+pub fn sed<T: CpuRegisters>(registers: &mut T) {
+    registers.set_decimal(true);
+}
+
+fn rotate_to_right<T: CpuRegisters>(registers: &mut 
