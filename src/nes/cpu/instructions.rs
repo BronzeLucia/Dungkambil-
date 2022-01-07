@@ -548,4 +548,8 @@ fn rotate_to_right<T: CpuRegisters>(registers: &mut T, v: Data) -> Data {
 }
 
 fn rotate_to_left<T: CpuRegisters>(registers: &mut T, v: Data) -> Data {
-    ((v << 1) as Data | 
+    ((v << 1) as Data | if registers.get_carry() { 0x01 } else { 0x00 }) as Data
+}
+
+fn push<T: CpuRegisters, U: CpuBus>(data: Data, registers: &mut T, bus: &mut U) {
+    let addr = registers
