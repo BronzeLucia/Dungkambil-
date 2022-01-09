@@ -568,4 +568,10 @@ fn pop<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) -> Data {
     bus.read(addr)
 }
 
-fn pop_
+fn pop_pc<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let lower = pop(registers, bus) as u16;
+    let upper = pop(registers, bus) as u16;
+    registers.set_PC(upper << 8 | lower);
+}
+
+fn pop_status<T:
