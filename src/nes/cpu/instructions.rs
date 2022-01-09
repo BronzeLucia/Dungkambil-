@@ -559,3 +559,13 @@ fn push<T: CpuRegisters, U: CpuBus>(data: Data, registers: &mut T, bus: &mut U) 
 
 fn push_status<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     let status = registers.get_P();
+    push(status, registers, bus);
+}
+
+fn pop<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) -> Data {
+    registers.inc_SP();
+    let addr = 0x0100 | registers.get_SP() as Addr;
+    bus.read(addr)
+}
+
+fn pop_
