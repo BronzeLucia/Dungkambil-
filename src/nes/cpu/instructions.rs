@@ -574,4 +574,9 @@ fn pop_pc<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     registers.set_PC(upper << 8 | lower);
 }
 
-fn pop_status<T:
+fn pop_status<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let status = pop(registers, bus);
+    registers.set_P(status);
+}
+
+fn push_pc<T: CpuRegisters, U: CpuBus>(registers: &mut 
