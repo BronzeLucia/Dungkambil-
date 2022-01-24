@@ -579,4 +579,11 @@ fn pop_status<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     registers.set_P(status);
 }
 
-fn push_pc<T: CpuRegisters, U: CpuBus>(registers: &mut 
+fn push_pc<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
+    let pc = registers.get_PC();
+    push((pc >> 8) as u8, registers, bus);
+    push(pc as u8, registers, bus);
+}
+
+fn branch<T: CpuRegisters>(registers: &mut T, addr: Addr) {
+    registers.set_PC(ad
