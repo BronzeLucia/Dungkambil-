@@ -586,4 +586,17 @@ fn push_pc<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
 }
 
 fn branch<T: CpuRegisters>(registers: &mut T, addr: Addr) {
-    registers.set_PC(ad
+    registers.set_PC(addr);
+}
+
+#[cfg(test)]
+mod test {
+    use super::super::super::cpu_registers::Registers;
+    use super::*;
+
+    struct MockBus {
+        pub mem: Vec<Data>,
+    }
+
+    impl MockBus {
+        pub fn new() 
