@@ -599,4 +599,13 @@ mod test {
     }
 
     impl MockBus {
-        pub fn new() 
+        pub fn new() -> Self {
+            MockBus { mem: vec!(0; 1024) }
+        }
+    }
+
+    impl CpuBus for MockBus {
+        fn read(&mut self, addr: Addr) -> Data {
+            self.mem[addr as usize]
+        }
+  
