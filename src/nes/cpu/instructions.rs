@@ -613,4 +613,12 @@ mod test {
             let upper = self.read(addr + 1) as u16;
             (upper << 8 | lower) as u16
         }
-        fn w
+        fn write(&mut self, addr: Addr, data: Data) {
+            self.mem[addr as usize] = data;
+        }
+    }
+
+    #[test]
+    fn test_lda_immediate() {
+        let mut reg = Registers::new();
+     
