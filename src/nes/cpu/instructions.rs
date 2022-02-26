@@ -621,4 +621,12 @@ mod test {
     #[test]
     fn test_lda_immediate() {
         let mut reg = Registers::new();
-     
+        lda_imm(0xA5, &mut reg);
+        assert_eq!(reg.get_A(), 0xA5);
+    }
+
+    #[test]
+    fn test_lda() {
+        let mut reg = Registers::new();
+        let mut bus = MockBus::new();
+       
