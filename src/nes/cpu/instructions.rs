@@ -645,4 +645,11 @@ mod test {
     fn test_ldx() {
         let mut reg = Registers::new();
         let mut bus = MockBus::new();
-  
+        bus.mem[0xAA] = 0xA5;
+        ldx(0xAA, &mut reg, &mut bus);
+        assert_eq!(reg.get_X(), 0xA5);
+    }
+
+    #[test]
+    fn test_ldy_immediate() {
+        let mut reg = Register
