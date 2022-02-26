@@ -637,4 +637,12 @@ mod test {
     #[test]
     fn test_ldx_immediate() {
         let mut reg = Registers::new();
-        ldx_imm
+        ldx_imm(0xA5, &mut reg);
+        assert_eq!(reg.get_X(), 0xA5);
+    }
+
+    #[test]
+    fn test_ldx() {
+        let mut reg = Registers::new();
+        let mut bus = MockBus::new();
+  
