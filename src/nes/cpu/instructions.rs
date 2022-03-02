@@ -652,4 +652,12 @@ mod test {
 
     #[test]
     fn test_ldy_immediate() {
-        let mut reg = Register
+        let mut reg = Registers::new();
+        ldy_imm(0xA5, &mut reg);
+        assert_eq!(reg.get_Y(), 0xA5);
+    }
+
+    #[test]
+    fn test_ldy() {
+        let mut reg = Registers::new();
+        let mu
