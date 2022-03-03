@@ -660,4 +660,12 @@ mod test {
     #[test]
     fn test_ldy() {
         let mut reg = Registers::new();
-        let mu
+        let mut bus = MockBus::new();
+        bus.mem[0xAA] = 0xA5;
+        ldy(0xAA, &mut reg, &mut bus);
+        assert_eq!(reg.get_Y(), 0xA5);
+    }
+
+    #[test]
+    fn test_sta() {
+        let mut reg = Registers::new
