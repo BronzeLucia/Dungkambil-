@@ -677,4 +677,12 @@ mod test {
 
     #[test]
     fn test_stx() {
-        let mut reg = Register
+        let mut reg = Registers::new();
+        reg.set_X(0xA5);
+        let mut bus = MockBus::new();
+        stx(0xAA, &mut reg, &mut bus);
+        assert_eq!(bus.mem[0xAA], 0xA5);
+    }
+
+    #[test]
+    
