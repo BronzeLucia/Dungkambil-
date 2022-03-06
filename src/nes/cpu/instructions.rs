@@ -693,4 +693,14 @@ mod test {
         assert_eq!(bus.mem[0xAA], 0xA5);
     }
 
-    #[te
+    #[test]
+    fn test_txa() {
+        let mut reg = Registers::new();
+        reg.set_X(0xA5);
+        txa(&mut reg);
+        assert_eq!(reg.get_A(), 0xA5);
+    }
+
+    #[test]
+    fn test_tax() {
+        let m
