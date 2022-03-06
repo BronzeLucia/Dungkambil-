@@ -685,4 +685,12 @@ mod test {
     }
 
     #[test]
-    
+    fn test_sty() {
+        let mut reg = Registers::new();
+        reg.set_Y(0xA5);
+        let mut bus = MockBus::new();
+        sty(0xAA, &mut reg, &mut bus);
+        assert_eq!(bus.mem[0xAA], 0xA5);
+    }
+
+    #[te
