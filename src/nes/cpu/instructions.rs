@@ -668,4 +668,13 @@ mod test {
 
     #[test]
     fn test_sta() {
-        let mut reg = Registers::new
+        let mut reg = Registers::new();
+        reg.set_A(0xA5);
+        let mut bus = MockBus::new();
+        sta(0xAA, &mut reg, &mut bus);
+        assert_eq!(bus.mem[0xAA], 0xA5);
+    }
+
+    #[test]
+    fn test_stx() {
+        let mut reg = Register
