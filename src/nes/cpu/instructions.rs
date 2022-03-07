@@ -703,4 +703,12 @@ mod test {
 
     #[test]
     fn test_tax() {
-        let m
+        let mut reg = Registers::new();
+        reg.set_A(0xA5);
+        tax(&mut reg);
+        assert_eq!(reg.get_X(), 0xA5);
+    }
+
+    #[test]
+    fn test_tay() {
+        let mut reg = Registers
