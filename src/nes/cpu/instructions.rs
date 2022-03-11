@@ -740,4 +740,12 @@ mod test {
         reg.set_SP(0xA5);
         tsx(&mut reg);
         assert_eq!(reg.get_X(), 0xA5);
-   
+    }
+
+    #[test]
+    fn test_php() {
+        let mut reg = Registers::new();
+        reg.set_SP(0xA5);
+        let mut bus = MockBus::new();
+        php(&mut reg, &mut bus);
+        assert_eq
