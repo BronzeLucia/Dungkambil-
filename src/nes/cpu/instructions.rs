@@ -748,4 +748,13 @@ mod test {
         reg.set_SP(0xA5);
         let mut bus = MockBus::new();
         php(&mut reg, &mut bus);
-        assert_eq
+        assert_eq!(bus.mem[0x01A5], 0x34);
+    }
+
+    #[test]
+    fn test_plp() {
+        let mut reg = Registers::new();
+        reg.set_SP(0xA5);
+        let mut bus = MockBus::new();
+        bus.mem[0x1A6] = 0xA5;
+        plp(&mut reg, &mut b
