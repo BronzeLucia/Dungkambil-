@@ -731,4 +731,13 @@ mod test {
         let mut reg = Registers::new();
         reg.set_X(0xA5);
         txs(&mut reg);
-    
+        assert_eq!(reg.get_SP(), 0xA5);
+    }
+
+    #[test]
+    fn test_tsx() {
+        let mut reg = Registers::new();
+        reg.set_SP(0xA5);
+        tsx(&mut reg);
+        assert_eq!(reg.get_X(), 0xA5);
+   
