@@ -757,4 +757,12 @@ mod test {
         reg.set_SP(0xA5);
         let mut bus = MockBus::new();
         bus.mem[0x1A6] = 0xA5;
-        plp(&mut reg, &mut b
+        plp(&mut reg, &mut bus);
+        assert_eq!(reg.get_P(), 0xA5);
+    }
+
+    #[test]
+    fn test_pha() {
+        let mut reg = Registers::new();
+        reg.set_SP(0xA5).set_A(0x5A);
+        let mut bus = MockBus::ne
