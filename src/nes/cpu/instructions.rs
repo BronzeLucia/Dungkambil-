@@ -721,4 +721,14 @@ mod test {
     #[test]
     fn test_tya() {
         let mut reg = Registers::new();
-        reg.set_Y(0
+        reg.set_Y(0xA5);
+        tya(&mut reg);
+        assert_eq!(reg.get_A(), 0xA5);
+    }
+
+    #[test]
+    fn test_txs() {
+        let mut reg = Registers::new();
+        reg.set_X(0xA5);
+        txs(&mut reg);
+    
