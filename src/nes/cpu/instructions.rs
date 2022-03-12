@@ -791,4 +791,11 @@ mod test {
     #[test]
     fn test_adc() {
         let mut reg = Registers::new();
-      
+        reg.set_A(0x05);
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0xAA;
+        adc(0xA5, &mut reg, &mut bus);
+        assert_eq!(reg.get_A(), 0xAF);
+    }
+
+    #[t
