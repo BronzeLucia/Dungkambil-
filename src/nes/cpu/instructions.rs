@@ -782,4 +782,13 @@ mod test {
 
     #[test]
     fn test_adc_immediate() {
-        let mut reg = Regi
+        let mut reg = Registers::new();
+        reg.set_A(0x05);
+        adc_imm(0xA5, &mut reg);
+        assert_eq!(reg.get_A(), 0xAA);
+    }
+
+    #[test]
+    fn test_adc() {
+        let mut reg = Registers::new();
+      
