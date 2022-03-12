@@ -798,4 +798,13 @@ mod test {
         assert_eq!(reg.get_A(), 0xAF);
     }
 
-    #[t
+    #[test]
+    fn test_sbc_immediate() {
+        let mut reg = Registers::new();
+        reg.set_A(0x10);
+        sbc_imm(0x06, &mut reg);
+        assert_eq!(reg.get_A(), 0x09);
+    }
+
+    #[test]
+  
