@@ -775,4 +775,11 @@ mod test {
         let mut reg = Registers::new();
         reg.set_SP(0xA5);
         let mut bus = MockBus::new();
-     
+        bus.mem[0x1A6] = 0xAA;
+        pla(&mut reg, &mut bus);
+        assert_eq!(reg.get_A(), 0xAA);
+    }
+
+    #[test]
+    fn test_adc_immediate() {
+        let mut reg = Regi
