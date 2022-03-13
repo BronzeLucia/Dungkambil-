@@ -813,4 +813,11 @@ mod test {
         let mut bus = MockBus::new();
         bus.mem[0xA5] = 0x06;
         sbc(0xA5, &mut reg, &mut bus);
-       
+        assert_eq!(reg.get_A(), 0x09);
+    }
+
+    #[test]
+    fn test_cpx_immediate() {
+        let mut reg = Registers::new();
+        reg.set_X(0x05);
+        cpx_imm(0x04, &m
