@@ -807,4 +807,10 @@ mod test {
     }
 
     #[test]
-  
+    fn test_sbc() {
+        let mut reg = Registers::new();
+        reg.set_A(0x10);
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0x06;
+        sbc(0xA5, &mut reg, &mut bus);
+       
