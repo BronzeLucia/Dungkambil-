@@ -820,4 +820,13 @@ mod test {
     fn test_cpx_immediate() {
         let mut reg = Registers::new();
         reg.set_X(0x05);
-        cpx_imm(0x04, &m
+        cpx_imm(0x04, &mut reg);
+        assert_eq!(reg.get_carry(), true);
+    }
+
+    #[test]
+    fn test_cpx() {
+        let mut reg = Registers::new();
+        reg.set_X(0x05);
+        let mut bus = MockBus::new();
+        
