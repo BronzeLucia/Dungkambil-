@@ -837,4 +837,13 @@ mod test {
     #[test]
     fn test_cpy_immediate() {
         let mut reg = Registers::new();
-        reg
+        reg.set_Y(0x05);
+        cpy_imm(0x04, &mut reg);
+        assert_eq!(reg.get_carry(), true);
+    }
+
+    #[test]
+    fn test_cpy() {
+        let mut reg = Registers::new();
+        reg.set_Y(0x05);
+        let mut b
