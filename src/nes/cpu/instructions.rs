@@ -854,4 +854,12 @@ mod test {
 
     #[test]
     fn test_cmp_immediate() {
-        let
+        let mut reg = Registers::new();
+        reg.set_A(0x05);
+        cmp_imm(0x04, &mut reg);
+        assert_eq!(reg.get_carry(), true);
+    }
+
+    #[test]
+    fn test_cmp() {
+        let mut reg = Registers::new();
