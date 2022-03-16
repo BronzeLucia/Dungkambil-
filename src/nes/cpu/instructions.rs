@@ -846,4 +846,12 @@ mod test {
     fn test_cpy() {
         let mut reg = Registers::new();
         reg.set_Y(0x05);
-        let mut b
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0x04;
+        cpy(0xA5, &mut reg, &mut bus);
+        assert_eq!(reg.get_carry(), true);
+    }
+
+    #[test]
+    fn test_cmp_immediate() {
+        let
