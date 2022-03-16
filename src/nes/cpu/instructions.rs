@@ -863,3 +863,11 @@ mod test {
     #[test]
     fn test_cmp() {
         let mut reg = Registers::new();
+        reg.set_A(0x05);
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0x04;
+        cmp(0xA5, &mut reg, &mut bus);
+        assert_eq!(reg.get_carry(), true);
+    }
+
+    #[test]
