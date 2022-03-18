@@ -871,3 +871,12 @@ mod test {
     }
 
     #[test]
+    fn test_and_immediate() {
+        let mut reg = Registers::new();
+        reg.set_A(0xA5);
+        and_imm(0x05, &mut reg);
+        assert_eq!(reg.get_A(), 0x05);
+    }
+
+    #[test]
+    fn test_and
