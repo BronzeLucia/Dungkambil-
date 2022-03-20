@@ -897,4 +897,10 @@ mod test {
     }
 
     #[test]
-    
+    fn test_eor() {
+        let mut reg = Registers::new();
+        reg.set_A(0xA5);
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0x05;
+        eor(0xA5, &mut reg, &mut bus);
+        assert_e
