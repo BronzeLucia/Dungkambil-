@@ -885,4 +885,16 @@ mod test {
         let mut bus = MockBus::new();
         bus.mem[0xA5] = 0x05;
         and(0xA5, &mut reg, &mut bus);
-        assert_eq!(reg
+        assert_eq!(reg.get_A(), 0x05);
+    }
+
+    #[test]
+    fn test_eor_immediate() {
+        let mut reg = Registers::new();
+        reg.set_A(0xA5);
+        eor_imm(0x05, &mut reg);
+        assert_eq!(reg.get_A(), 0xA0);
+    }
+
+    #[test]
+    
