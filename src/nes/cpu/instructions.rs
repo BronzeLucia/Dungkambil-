@@ -912,3 +912,13 @@ mod test {
         reg.set_A(0xA0);
         ora_imm(0x05, &mut reg);
         assert_eq!(reg.get_A(), 0xA5);
+    }
+
+    #[test]
+    fn test_ora() {
+        let mut reg = Registers::new();
+        reg.set_A(0xA0);
+        let mut bus = MockBus::new();
+        bus.mem[0xA5] = 0x05;
+        ora(0xA5, &mut reg, &mut bus);
+    
