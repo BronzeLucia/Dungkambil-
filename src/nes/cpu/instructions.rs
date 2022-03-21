@@ -921,4 +921,12 @@ mod test {
         let mut bus = MockBus::new();
         bus.mem[0xA5] = 0x05;
         ora(0xA5, &mut reg, &mut bus);
-    
+        assert_eq!(reg.get_A(), 0xA5);
+    }
+
+    #[test]
+    fn test_asl_acc() {
+        let mut reg = Registers::new();
+        reg.set_A(0x55);
+        asl_acc(&mut reg);
+        assert_eq!(reg.get_A(), 0
