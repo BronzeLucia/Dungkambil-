@@ -929,4 +929,12 @@ mod test {
         let mut reg = Registers::new();
         reg.set_A(0x55);
         asl_acc(&mut reg);
-        assert_eq!(reg.get_A(), 0
+        assert_eq!(reg.get_A(), 0xAA);
+    }
+
+    #[test]
+    fn test_asl() {
+        let mut reg = Registers::new();
+        let mut bus = MockBus::new();
+        bus.mem[0x00] = 0x55;
+        asl(0x00, &mut reg, &mut bus)
