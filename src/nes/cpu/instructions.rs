@@ -947,3 +947,12 @@ mod test {
         reg.set_A(0xAA);
         lsr_acc(&mut reg);
         assert_eq!(reg.get_A(), 0x55);
+    }
+
+    #[test]
+    fn test_lsr() {
+        let mut reg = Registers::new();
+        let mut bus = MockBus::new();
+        bus.mem[0x00] = 0xAA;
+        lsr(0x00, &mut reg, &mut bus);
+        assert_eq!(bus.mem
