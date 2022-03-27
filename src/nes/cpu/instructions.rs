@@ -955,4 +955,12 @@ mod test {
         let mut bus = MockBus::new();
         bus.mem[0x00] = 0xAA;
         lsr(0x00, &mut reg, &mut bus);
-        assert_eq!(bus.mem
+        assert_eq!(bus.mem[0x00], 0x55);
+    }
+
+    #[test]
+    fn test_rol_accumlator_with_carry() {
+        let mut reg = Registers::new();
+        reg.set_A(0x55).set_carry(true);
+        rol_acc(&mut reg);
+        assert_eq
