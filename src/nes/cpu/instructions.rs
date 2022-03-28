@@ -999,4 +999,12 @@ mod test {
     }
     #[test]
     fn test_inc() {
-        let mu
+        let mut reg = Registers::new();
+        let mut bus = MockBus::new();
+        bus.mem[0x10] = 0xAA;
+        inc(0x10, &mut reg, &mut bus);
+        assert_eq!(bus.mem[0x10], 0xAB);
+    }
+
+    #[test]
+ 
