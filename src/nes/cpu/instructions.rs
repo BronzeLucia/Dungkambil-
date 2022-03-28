@@ -971,4 +971,12 @@ mod test {
         let mut reg = Registers::new();
         reg.set_A(0x55).set_carry(true);
         ror_acc(&mut reg);
-  
+        assert_eq!(reg.get_A(), 0xAA);
+    }
+
+    #[test]
+    fn test_ror_accumlator_without_carry() {
+        let mut reg = Registers::new();
+        reg.set_A(0x55);
+        ror_acc(&mut reg);
+        assert_eq
