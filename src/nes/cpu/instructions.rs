@@ -991,4 +991,12 @@ mod test {
     }
 
     #[test]
-    fn tes
+    fn test_iny() {
+        let mut reg = Registers::new();
+        reg.set_Y(0x55);
+        iny(&mut reg);
+        assert_eq!(reg.get_Y(), 0x56);
+    }
+    #[test]
+    fn test_inc() {
+        let mu
