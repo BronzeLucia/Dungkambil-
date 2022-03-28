@@ -979,4 +979,16 @@ mod test {
         let mut reg = Registers::new();
         reg.set_A(0x55);
         ror_acc(&mut reg);
-        assert_eq
+        assert_eq!(reg.get_A(), 0x2A);
+    }
+
+    #[test]
+    fn test_inx() {
+        let mut reg = Registers::new();
+        reg.set_X(0x55);
+        inx(&mut reg);
+        assert_eq!(reg.get_X(), 0x56);
+    }
+
+    #[test]
+    fn tes
