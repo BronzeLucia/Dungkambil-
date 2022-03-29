@@ -1016,4 +1016,13 @@ mod test {
 
     #[test]
     fn test_dey() {
-        let mut r
+        let mut reg = Registers::new();
+        reg.set_Y(0x55);
+        dey(&mut reg);
+        assert_eq!(reg.get_Y(), 0x54);
+    }
+
+    #[test]
+    fn test_dec() {
+        let mut reg = Registers::new();
+        let mut 
