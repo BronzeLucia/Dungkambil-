@@ -1034,4 +1034,12 @@ mod test {
     #[test]
     fn test_jsr() {
         let mut reg = Registers::new();
-       
+        let mut bus = MockBus::new();
+        jsr(0x10, &mut reg, &mut bus);
+        assert_eq!(reg.get_PC(), 0x10);
+    }
+
+    #[test]
+    fn test_jmp() {
+        let mut reg = Registers::new();
+   
