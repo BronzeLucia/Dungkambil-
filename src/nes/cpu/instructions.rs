@@ -1042,4 +1042,7 @@ mod test {
     #[test]
     fn test_jmp() {
         let mut reg = Registers::new();
-   
+        jmp(0x10, &mut reg);
+        assert_eq!(reg.get_PC(), 0x10);
+    }
+}
