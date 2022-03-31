@@ -1025,4 +1025,13 @@ mod test {
     #[test]
     fn test_dec() {
         let mut reg = Registers::new();
-        let mut 
+        let mut bus = MockBus::new();
+        bus.mem[0x10] = 0xAA;
+        dec(0x10, &mut reg, &mut bus);
+        assert_eq!(bus.mem[0x10], 0xA9);
+    }
+
+    #[test]
+    fn test_jsr() {
+        let mut reg = Registers::new();
+       
