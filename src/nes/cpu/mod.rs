@@ -29,4 +29,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
     let ref map = opecode::MAP;
     let code = &*map.get(&code).unwrap();
     let operand = fetch_operand(&code, registers, bus);
-    // println!("o
+    // println!("opecode = {}, {:?} pc = {:x}, operand = {:x}", &_code, code.name, &registers.get_PC(), operand);
+    match code.name {
+        Instruction::LDA if code.mode == Addressing::Immediate => lda_imm(operand, registers
