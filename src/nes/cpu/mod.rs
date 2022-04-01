@@ -23,4 +23,10 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
 ) -> Data {
     if *nmi {
         process_nmi(registers, bus);
-  
+        *nmi = false;
+    }
+    let code = fetch(registers, bus);
+    let ref map = opecode::MAP;
+    let code = &*map.get(&code).unwrap();
+    let operand = fetch_operand(&code, registers, bus);
+    // println!("o
