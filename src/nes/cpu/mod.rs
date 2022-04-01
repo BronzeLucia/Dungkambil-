@@ -13,4 +13,14 @@ use super::types::Data;
 
 pub fn reset<T: CpuRegisters, U: CpuBus>(registers: &mut T, bus: &mut U) {
     let pc = bus.read_word(0xFFFC);
-   
+    registers.set_PC(pc);
+}
+
+pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
+    registers: &mut T,
+    bus: &mut U,
+    nmi: &mut bool,
+) -> Data {
+    if *nmi {
+        process_nmi(registers, bus);
+  
