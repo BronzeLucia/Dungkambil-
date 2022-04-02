@@ -41,4 +41,9 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::STX => stx(operand, registers, bus),
         Instruction::STY => sty(operand, registers, bus),
         Instruction::TXA => txa(registers),
-        Instruction::TY
+        Instruction::TYA => tya(registers),
+        Instruction::TXS => txs(registers),
+        Instruction::TAY => tay(registers),
+        Instruction::TAX => tax(registers),
+        Instruction::TSX => tsx(registers),
+        Instructio
