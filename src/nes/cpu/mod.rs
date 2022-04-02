@@ -34,4 +34,7 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::LDA if code.mode == Addressing::Immediate => lda_imm(operand, registers),
         Instruction::LDA => lda(operand, registers, bus),
         Instruction::LDX if code.mode == Addressing::Immediate => ldx_imm(operand, registers),
-        Instruction::LDX => ldx(ope
+        Instruction::LDX => ldx(operand, registers, bus),
+        Instruction::LDY if code.mode == Addressing::Immediate => ldy_imm(operand, registers),
+        Instruction::LDY => ldy(operand, registers, bus),
+        Instruction::STA => sta(oper
