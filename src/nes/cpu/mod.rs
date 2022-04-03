@@ -46,4 +46,8 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::TAY => tay(registers),
         Instruction::TAX => tax(registers),
         Instruction::TSX => tsx(registers),
-        Instructio
+        Instruction::PHP => php(registers, bus),
+        Instruction::PLP => plp(registers, bus),
+        Instruction::PHA => pha(registers, bus),
+        Instruction::PLA => pla(registers, bus),
+        Instruction::AD
