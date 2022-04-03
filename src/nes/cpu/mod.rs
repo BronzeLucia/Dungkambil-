@@ -52,4 +52,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::PLA => pla(registers, bus),
         Instruction::ADC if code.mode == Addressing::Immediate => adc_imm(operand, registers),
         Instruction::ADC => adc(operand, registers, bus),
-        Instruction::SBC if code.mode == Addressing::Immediate =
+        Instruction::SBC if code.mode == Addressing::Immediate => sbc_imm(operand, registers),
+        Instruction::SBC => sbc(operand, registers, bus),
+        Instruction::CPX if code.mode == Addressing::Immediate => cpx_imm(operand, 
