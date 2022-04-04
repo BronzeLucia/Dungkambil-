@@ -57,4 +57,7 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::CPX if code.mode == Addressing::Immediate => cpx_imm(operand, registers),
         Instruction::CPX => cpx(operand, registers, bus),
         Instruction::CPY if code.mode == Addressing::Immediate => cpy_imm(operand, registers),
-        Instruction::CPY
+        Instruction::CPY => cpy(operand, registers, bus),
+        Instruction::CMP if code.mode == Addressing::Immediate => cmp_imm(operand, registers),
+        Instruction::CMP => cmp(operand, registers, bus),
+        Instruction
