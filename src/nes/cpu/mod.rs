@@ -60,4 +60,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::CPY => cpy(operand, registers, bus),
         Instruction::CMP if code.mode == Addressing::Immediate => cmp_imm(operand, registers),
         Instruction::CMP => cmp(operand, registers, bus),
-        Instruction
+        Instruction::AND if code.mode == Addressing::Immediate => and_imm(operand, registers),
+        Instruction::AND => and(operand, registers, bus),
+        Instruction::EOR if code.mode == Addressing::Immediate =>
