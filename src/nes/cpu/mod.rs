@@ -65,4 +65,7 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::EOR if code.mode == Addressing::Immediate => eor_imm(operand, registers),
         Instruction::EOR => eor(operand, registers, bus),
         Instruction::ORA if code.mode == Addressing::Immediate => ora_imm(operand, registers),
-        Instruction::
+        Instruction::ORA => ora(operand, registers, bus),
+        Instruction::BIT => bit(operand, registers, bus),
+        Instruction::ASL if code.mode == Addressing::Accumulator => asl_acc(registers),
+        Instruct
