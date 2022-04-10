@@ -71,4 +71,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::ASL => asl(operand, registers, bus),
         Instruction::LSR if code.mode == Addressing::Accumulator => lsr_acc(registers),
         Instruction::LSR => lsr(operand, registers, bus),
-        In
+        Instruction::ROL if code.mode == Addressing::Accumulator => rol_acc(registers),
+        Instruction::ROL => rol(operand, registers, bus),
+        Instruction::ROR if code.mode == Addressing::Accumulator => ror_acc(
