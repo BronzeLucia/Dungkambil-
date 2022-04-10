@@ -68,4 +68,7 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::ORA => ora(operand, registers, bus),
         Instruction::BIT => bit(operand, registers, bus),
         Instruction::ASL if code.mode == Addressing::Accumulator => asl_acc(registers),
-        Instruct
+        Instruction::ASL => asl(operand, registers, bus),
+        Instruction::LSR if code.mode == Addressing::Accumulator => lsr_acc(registers),
+        Instruction::LSR => lsr(operand, registers, bus),
+        In
