@@ -85,4 +85,8 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::CLI => cli(registers),
         Instruction::CLV => clv(registers),
         Instruction::SEC => sec(registers),
-        Instruction::SEI => sei(registers)
+        Instruction::SEI => sei(registers),
+        Instruction::NOP => (),
+        Instruction::BRK => brk(registers, bus),
+        Instruction::JSR => jsr(operand, registers, bus),
+        Instruction::JMP => jmp(operand, registe
