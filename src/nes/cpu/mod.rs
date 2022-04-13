@@ -77,4 +77,8 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::ROR => ror(operand, registers, bus),
         Instruction::INX => inx(registers),
         Instruction::INY => iny(registers),
-        Instruction::INC => inc(op
+        Instruction::INC => inc(operand, registers, bus),
+        Instruction::DEX => dex(registers),
+        Instruction::DEY => dey(registers),
+        Instruction::DEC => dec(operand, registers, bus),
+        Instructi
