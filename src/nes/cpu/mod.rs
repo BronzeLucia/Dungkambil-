@@ -93,4 +93,8 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::RTI => rti(registers, bus),
         Instruction::RTS => rts(registers, bus),
         Instruction::BCC => bcc(operand, registers),
-        Instruction::BPL => bpl(ope
+        Instruction::BPL => bpl(operand, registers),
+        Instruction::BMI => bmi(operand, registers),
+        Instruction::BVC => bvc(operand, registers),
+        Instruction::BVS => bvs(operand, registers),
+        Instruction::BCS => b
