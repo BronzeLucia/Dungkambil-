@@ -102,4 +102,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::BEQ => beq(operand, registers),
         Instruction::SED => sed(registers),
         Instruction::CLD => cld(registers),
-      
+        Instruction::LAX => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::SAX => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::DCP => println!("{}", "TODO:Undocumente
