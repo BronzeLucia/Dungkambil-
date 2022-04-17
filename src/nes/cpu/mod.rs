@@ -104,4 +104,7 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::CLD => cld(registers),
         Instruction::LAX => println!("{}", "TODO:Undocumented instruction"),
         Instruction::SAX => println!("{}", "TODO:Undocumented instruction"),
-        Instruction::DCP => println!("{}", "TODO:Undocumente
+        Instruction::DCP => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::ISB => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::SLO => println!("{}", "TODO:Undocumented instruction"),
+        Inst
