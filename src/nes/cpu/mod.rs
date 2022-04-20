@@ -109,4 +109,8 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::SLO => println!("{}", "TODO:Undocumented instruction"),
         Instruction::RLA => println!("{}", "TODO:Undocumented instruction"),
         Instruction::SRE => println!("{}", "TODO:Undocumented instruction"),
-        Instruction::RRA => println!("{}", "TODO:Undocumented instructi
+        Instruction::RRA => println!("{}", "TODO:Undocumented instruction"),
+        _ => panic!("{}", "Undefined opecode detected."),
+    }
+    code.cycle
+}
