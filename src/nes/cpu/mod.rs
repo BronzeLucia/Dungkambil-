@@ -107,4 +107,6 @@ pub fn run<T: CpuRegisters + Debug, U: CpuBus>(
         Instruction::DCP => println!("{}", "TODO:Undocumented instruction"),
         Instruction::ISB => println!("{}", "TODO:Undocumented instruction"),
         Instruction::SLO => println!("{}", "TODO:Undocumented instruction"),
-        Inst
+        Instruction::RLA => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::SRE => println!("{}", "TODO:Undocumented instruction"),
+        Instruction::RRA => println!("{}", "TODO:Undocumented instructi
