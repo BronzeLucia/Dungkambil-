@@ -70,4 +70,20 @@ pub enum Instruction {
     CLD,
     LAX,
     SAX,
-    DC
+    DCP,
+    ISB,
+    SLO,
+    RLA,
+    SRE,
+    RRA,
+}
+
+#[derive(Debug, PartialEq)]
+pub enum Addressing {
+    Immediate,
+    ZeroPage,
+    Relative,
+    Implied,
+    Absolute,
+    Accumulator,
+    Z
