@@ -86,4 +86,17 @@ pub enum Addressing {
     Implied,
     Absolute,
     Accumulator,
-    Z
+    ZeroPageX,
+    ZeroPageY,
+    AbsoluteX,
+    AbsoluteY,
+    PreIndexedIndirect,
+    PostIndexedIndirect,
+    IndirectAbsolute,
+}
+
+lazy_static! {
+        
+        pub static ref MAP: HashMap<u8, Opecode> = {
+
+    
