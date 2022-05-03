@@ -99,4 +99,7 @@ lazy_static! {
         
         pub static ref MAP: HashMap<u8, Opecode> = {
 
-    
+            #[cfg_attr(rustfmt, rustfmt_skip)]
+            let cycles: Vec<u8> =
+                vec![7, 6, 2, 8, 3, 3, 5, 5, 3, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7,
+                  
