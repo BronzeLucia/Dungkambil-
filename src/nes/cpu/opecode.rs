@@ -112,4 +112,6 @@ lazy_static! {
                      2, 6, 3, 8, 3, 3, 5, 5, 2, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7,
                      4, 4, 7, 7];            
             let mut m = HashMap::new();
-            m.insert(0xA9, Opecode { name: Instruction::LDA, mode: Addressing::Immediate, cycle: cyc
+            m.insert(0xA9, Opecode { name: Instruction::LDA, mode: Addressing::Immediate, cycle: cycles[0xA9] });
+            m.insert(0xA5, Opecode { name: Instruction::LDA, mode: Addressing::ZeroPage, cycle: cycles[0xA5] });
+            m.insert(0xB5, Opecode { name: Instruction::LDA, mode: Addressing::ZeroPage
