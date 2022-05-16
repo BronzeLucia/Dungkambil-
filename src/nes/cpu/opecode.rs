@@ -139,4 +139,6 @@ lazy_static! {
             m.insert(0x91, Opecode { name: Instruction::STA, mode: Addressing::PostIndexedIndirect, cycle: cycles[0x91] });
             m.insert(0x86, Opecode { name: Instruction::STX, mode: Addressing::ZeroPage, cycle: cycles[0x86] });
             m.insert(0x8E, Opecode { name: Instruction::STX, mode: Addressing::Absolute, cycle: cycles[0x8E] });
-            m.insert(0x96, Opecode { name: Instruction::STX, mode: Addressing::ZeroPageY, cycle: cyc
+            m.insert(0x96, Opecode { name: Instruction::STX, mode: Addressing::ZeroPageY, cycle: cycles[0x96] });
+            m.insert(0x84, Opecode { name: Instruction::STY, mode: Addressing::ZeroPage, cycle: cycles[0x84] });
+            m.insert(0x8C, Opecode { name: Instruction::STY, mode: Address
