@@ -150,4 +150,6 @@ lazy_static! {
             m.insert(0xAA, Opecode { name: Instruction::TAX, mode: Addressing::Implied, cycle: cycles[0xAA] });
             m.insert(0xBA, Opecode { name: Instruction::TSX, mode: Addressing::Implied, cycle: cycles[0xBA] });
             m.insert(0x08, Opecode { name: Instruction::PHP, mode: Addressing::Implied, cycle: cycles[0x08] });
-            m.insert(0x28, Opecode { name: Instruction:
+            m.insert(0x28, Opecode { name: Instruction::PLP, mode: Addressing::Implied, cycle: cycles[0x28] });
+            m.insert(0x48, Opecode { name: Instruction::PHA, mode: Addressing::Implied, cycle: cycles[0x48] });
+            m.insert(0x68, Opecode { n
