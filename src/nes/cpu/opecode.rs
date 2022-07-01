@@ -197,4 +197,6 @@ lazy_static! {
             m.insert(0x55, Opecode { name: Instruction::EOR, mode: Addressing::ZeroPageX, cycle: cycles[0x55] });
             m.insert(0x5D, Opecode { name: Instruction::EOR, mode: Addressing::AbsoluteX, cycle: cycles[0x5D] });
             m.insert(0x59, Opecode { name: Instruction::EOR, mode: Addressing::AbsoluteY, cycle: cycles[0x59] });
-            m.insert(0x41, Opecode { name: Instruction::EOR, mo
+            m.insert(0x41, Opecode { name: Instruction::EOR, mode: Addressing::PreIndexedIndirect, cycle: cycles[0x41] });
+            m.insert(0x51, Opecode { name: Instruction::EOR, mode: Addressing::PostIndexedIndirect, cycle: cycles[0x51] });
+            m.insert(0x09, Ope
