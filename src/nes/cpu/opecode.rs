@@ -204,4 +204,6 @@ lazy_static! {
             m.insert(0x0D, Opecode { name: Instruction::ORA, mode: Addressing::Absolute, cycle: cycles[0x0D] });
             m.insert(0x15, Opecode { name: Instruction::ORA, mode: Addressing::ZeroPageX, cycle: cycles[0x15] });
             m.insert(0x1D, Opecode { name: Instruction::ORA, mode: Addressing::AbsoluteX, cycle: cycles[0x1D] });
-            m.insert(0x19, Opecode { name: Instruction::ORA, 
+            m.insert(0x19, Opecode { name: Instruction::ORA, mode: Addressing::AbsoluteY, cycle: cycles[0x19] });
+            m.insert(0x01, Opecode { name: Instruction::ORA, mode: Addressing::PreIndexedIndirect, cycle: cycles[0x01] });
+            m.insert(0x11, Opeco
