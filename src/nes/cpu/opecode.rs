@@ -226,4 +226,6 @@ lazy_static! {
             m.insert(0x3E, Opecode { name: Instruction::ROL, mode: Addressing::AbsoluteX, cycle: cycles[0x3E] });
             m.insert(0x6A, Opecode { name: Instruction::ROR, mode: Addressing::Accumulator, cycle: cycles[0x6A] });
             m.insert(0x66, Opecode { name: Instruction::ROR, mode: Addressing::ZeroPage, cycle: cycles[0x66] });
-            m.insert(0x6E, Opecode { name: Instruction::ROR, 
+            m.insert(0x6E, Opecode { name: Instruction::ROR, mode: Addressing::Absolute, cycle: cycles[0x6E] });
+            m.insert(0x76, Opecode { name: Instruction::ROR, mode: Addressing::ZeroPageX, cycle: cycles[0x76] });
+            m.insert(0x7E, 
