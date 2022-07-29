@@ -250,4 +250,6 @@ lazy_static! {
             m.insert(0x00, Opecode { name: Instruction::BRK, mode: Addressing::Implied, cycle: cycles[0x00] });
             m.insert(0x20, Opecode { name: Instruction::JSR, mode: Addressing::Absolute, cycle: cycles[0x20] });
             m.insert(0x4C, Opecode { name: Instruction::JMP, mode: Addressing::Absolute, cycle: cycles[0x4C] });
-            m.insert(0x6C, Opecode { name: Instruction::JMP, mode: Addressing::IndirectAbso
+            m.insert(0x6C, Opecode { name: Instruction::JMP, mode: Addressing::IndirectAbsolute, cycle: cycles[0x6C] });
+            m.insert(0x40, Opecode { name: Instruction::RTI, mode: Addressing::Implied, cycle: cycles[0x40] });
+            m.insert(0x60, Opecode { n
