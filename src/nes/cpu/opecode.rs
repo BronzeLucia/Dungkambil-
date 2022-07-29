@@ -245,4 +245,6 @@ lazy_static! {
             m.insert(0x58, Opecode { name: Instruction::CLI, mode: Addressing::Implied, cycle: cycles[0x58] });
             m.insert(0xB8, Opecode { name: Instruction::CLV, mode: Addressing::Implied, cycle: cycles[0xB8] });
             m.insert(0x38, Opecode { name: Instruction::SEC, mode: Addressing::Implied, cycle: cycles[0x38] });
-            m.insert(0x78, Opecode { nam
+            m.insert(0x78, Opecode { name: Instruction::SEI, mode: Addressing::Implied, cycle: cycles[0x78] });
+            m.insert(0xEA, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0xEA] });
+            m.insert(0x00, Ope
