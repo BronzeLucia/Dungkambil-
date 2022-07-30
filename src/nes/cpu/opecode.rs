@@ -255,4 +255,6 @@ lazy_static! {
             m.insert(0x60, Opecode { name: Instruction::RTS, mode: Addressing::Implied, cycle: cycles[0x60] });
             m.insert(0x10, Opecode { name: Instruction::BPL, mode: Addressing::Relative, cycle: cycles[0x10] });
             m.insert(0x30, Opecode { name: Instruction::BMI, mode: Addressing::Relative, cycle: cycles[0x30] });
-            m.insert(0x50, Opecode { name: Instruction::BVC, mode: Ad
+            m.insert(0x50, Opecode { name: Instruction::BVC, mode: Addressing::Relative, cycle: cycles[0x50] });
+            m.insert(0x70, Opecode { name: Instruction::BVS, mode: Addressing::Relative, cycle: cycles[0x70] });
+            m.insert(0x90, Opecode { name: Instru
