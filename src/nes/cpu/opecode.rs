@@ -268,4 +268,6 @@ lazy_static! {
             m.insert(0x5A, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0x5A] });
             m.insert(0x7A, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0x7A] });
             m.insert(0xDA, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0xDA] });
-            m.insert(0xFA, Opecode { name: Instruction::NOP, mode: Addressing::Impl
+            m.insert(0xFA, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0xFA] });
+            m.insert(0x02, Opecode { name: Instruction::NOP, mode: Addressing::Implied, cycle: cycles[0x02] });
+            m.insert(0x12, Opecode { name: Instruction::NOP, mode: Add
