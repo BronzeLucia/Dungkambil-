@@ -356,4 +356,5 @@ lazy_static! {
             m.insert(0x63, Opecode { name: Instruction::RRA, mode: Addressing::PreIndexedIndirect, cycle: cycles[0x63] });
             m.insert(0x73, Opecode { name: Instruction::RRA, mode: Addressing::PostIndexedIndirect, cycle: cycles[0x73] });            
             m
-     
+        };        
+    }
