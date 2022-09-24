@@ -206,3 +206,105 @@ impl CpuRegisters for Registers {
     fn set_interrupt(&mut self, v: bool) -> &mut Self {
         self.P.interrupt = v;
         self
+    }
+
+    fn set_zero(&mut self, v: bool) -> &mut Self {
+        self.P.zero = v;
+        self
+    }
+
+    fn set_decimal(&mut self, v: bool) -> &mut Self {
+        self.P.decimal_mode = v;
+        self
+    }
+
+    fn set_carry(&mut self, v: bool) -> &mut Self {
+        self.P.carry = v;
+        self
+    }
+
+    fn get_negative(&self) -> bool {
+        self.P.negative
+    }
+
+    fn get_overflow(&self) -> bool {
+        self.P.overflow
+    }
+
+    fn get_reserved(&self) -> bool {
+        self.P.reserved
+    }
+
+    fn get_break(&self) -> bool {
+        self.P.break_mode
+    }
+
+    fn get_interrupt(&self) -> bool {
+        self.P.interrupt
+    }
+
+    fn get_zero(&self) -> bool {
+        self.P.zero
+    }
+
+    fn get_decimal(&self) -> bool {
+        self.P.decimal_mode
+    }
+
+    fn get_carry(&self) -> bool {
+        self.P.carry
+    }
+
+    fn update_negative_by(&mut self, v: u8) -> &mut Self {
+        self.P.negative = v & 0x80 == 0x80;
+        self
+    }
+
+    fn update_zero_by(&mut self, v: u8) -> &mut Self {
+        self.P.zero = v == 0;
+        self
+    }
+
+    fn inc_SP(&mut self) -> &mut Self {
+        self.SP += 1;
+        self
+    }
+
+    fn dec_SP(&mut self) -> &mut Self {
+        self.SP -= 1;
+        self
+    }
+
+    fn inc_PC(&mut self) -> &mut Self {
+        self.PC += 1;
+        self
+    }
+
+    fn dec_PC(&mut self) -> &mut Self {
+        self.PC -= 1;
+        self
+    }
+}
+
+#[test]
+fn get_p() {
+    let reg = Registers::new();
+    let p = reg.get_P();
+    assert_eq!(p, 0x34);
+}
+
+#[test]
+fn update_zero() {
+    let mut reg = Registers::new();
+    reg.update_zero_by(0);
+    let p = reg.get_P();
+    assert_eq!(p, 0x36);
+}
+
+#[test]
+fn update_negative() {
+    let mut reg = Registers::new();
+    reg.update_negative_by(0x80);
+    let p = reg.get_P();
+    assert_eq!(p, 0xB4);
+}
