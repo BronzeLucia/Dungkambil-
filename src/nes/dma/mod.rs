@@ -25,4 +25,9 @@ impl Dma {
         self.should_run
     }    
 
-    pub fn run(&mut self, ram
+    pub fn run(&mut self, ram: &Ram, ppu: &mut Ppu) {
+        let addr = (self.register as u16) << 8;
+        for i in 0..0x100 {
+            ppu.transfer_sprite(i, ram.read(addr + i));
+        }
+        self.should_run = false
