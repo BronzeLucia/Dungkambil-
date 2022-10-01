@@ -16,4 +16,13 @@ impl Dma {
         }
     }
 
-    pub
+    pub fn write(&mut self, data: Data) {
+        self.register = data;
+        self.should_run = true;
+    }
+
+    pub fn should_run(&self) -> bool {
+        self.should_run
+    }    
+
+    pub fn run(&mut self, ram
