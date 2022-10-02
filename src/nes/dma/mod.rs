@@ -30,4 +30,6 @@ impl Dma {
         for i in 0..0x100 {
             ppu.transfer_sprite(i, ram.read(addr + i));
         }
-        self.should_run = false
+        self.should_run = false;
+    }
+}
