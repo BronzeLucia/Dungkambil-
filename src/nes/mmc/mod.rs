@@ -23,4 +23,6 @@ impl Mmc {
     }
 
     pub fn get_mapper(&self) -> u8 {
-        self.m
+        self.mapper
+    }
+}
