@@ -17,4 +17,8 @@ pub fn parse(buf: &mut [u8]) -> Cassette {
     if ines != "NES" {
         panic!("Invalid *.nes file.")
     };
-    let program_rom_pag
+    let program_rom_pages = buf[4] as usize;
+    println!("program rom size is {}", program_rom_pages);
+    let character_rom_pages = buf[5] as usize;
+    println!("character rom size is {}", character_rom_pages);
+    // TODO: mirror fl
