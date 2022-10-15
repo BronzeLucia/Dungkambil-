@@ -21,4 +21,8 @@ pub fn parse(buf: &mut [u8]) -> Cassette {
     println!("program rom size is {}", program_rom_pages);
     let character_rom_pages = buf[5] as usize;
     println!("character rom size is {}", character_rom_pages);
-    // TODO: mirror fl
+    // TODO: mirror flag, mapper number, etc.....
+    let is_horizontal_mirror = (buf[6] & 0x01) != 0x01;
+    let mapper = ((buf[6] & 0xF0) >> 4) | buf[7] & 0xF0;
+    println!("mapper type is {}", mapper);
+    let character_rom
