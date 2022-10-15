@@ -25,4 +25,7 @@ pub fn parse(buf: &mut [u8]) -> Cassette {
     let is_horizontal_mirror = (buf[6] & 0x01) != 0x01;
     let mapper = ((buf[6] & 0xF0) >> 4) | buf[7] & 0xF0;
     println!("mapper type is {}", mapper);
-    let character_rom
+    let character_rom_start = NES_HEADER_SIZE + program_rom_pages * PROGRAM_ROM_SIZE;
+    let character_rom_end = character_rom_start + character_rom_pages * CHARACTER_ROM_SIZE;
+    Cassette {
+        is_horizonta
