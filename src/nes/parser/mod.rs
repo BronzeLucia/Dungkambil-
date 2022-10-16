@@ -32,4 +32,5 @@ pub fn parse(buf: &mut [u8]) -> Cassette {
         program_rom: buf[NES_HEADER_SIZE..character_rom_start].to_vec(),
         character_ram: buf[character_rom_start..character_rom_end].to_vec(),
         mapper,
-  
+    }
+}
