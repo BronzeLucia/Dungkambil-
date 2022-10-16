@@ -27,4 +27,13 @@ impl Background {
         Background(Vec::new())
     }
 
-    pub f
+    pub fn clear(&mut self) {
+        self.0 = Vec::new();
+    }
+
+    pub fn build_line<P: PaletteRam>(
+        &mut self,
+        vram: &Ram,
+        cram: &Ram,
+        palette: &P,
+    
