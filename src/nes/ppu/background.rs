@@ -17,4 +17,14 @@ pub struct BackgroundCtx {
 
 pub type BackgroundField = Vec<BackgroundCtx>;
 
-#[derive
+#[derive(Debug)]
+pub struct Background(pub BackgroundField);
+
+const TILE_PER_LINE: u8 = 32;
+
+impl Background {
+    pub fn new() -> Self {
+        Background(Vec::new())
+    }
+
+    pub f
