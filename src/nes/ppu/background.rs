@@ -36,4 +36,9 @@ impl Background {
         vram: &Ram,
         cram: &Ram,
         palette: &P,
-    
+        tile: (u8, u8),
+        scroll: (u8, u8),
+        config: &mut SpriteConfig,
+        mmc: &Mmc,
+    ) {
+        // INFO: Horizontal offsets range from 0 to 255. "Normal" vertical offsets rang
