@@ -41,4 +41,7 @@ impl Background {
         config: &mut SpriteConfig,
         mmc: &Mmc,
     ) {
-        // INFO: Horizontal offsets range from 0 to 255. "Normal" vertical offsets rang
+        // INFO: Horizontal offsets range from 0 to 255. "Normal" vertical offsets range from 0 to 239,
+        // while values of 240 to 255 are treated as -16 through -1 in a way, but tile data is incorrectly
+        // fetched from the attribute table.
+        let clamped_tile_y = tile.1 %
