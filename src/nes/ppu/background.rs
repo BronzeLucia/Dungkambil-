@@ -44,4 +44,8 @@ impl Background {
         // INFO: Horizontal offsets range from 0 to 255. "Normal" vertical offsets range from 0 to 239,
         // while values of 240 to 255 are treated as -16 through -1 in a way, but tile data is incorrectly
         // fetched from the attribute table.
-        let clamped_tile_y = tile.1 %
+        let clamped_tile_y = tile.1 % 30;
+        let table_id_offset = if (tile.1 / 30) % 2 == 0 { 0 } else { 2 };
+        // background of a line.
+        // Build viewport + 1 tile for background scroll.
+        for x in 0..(
