@@ -48,4 +48,8 @@ impl Background {
         let table_id_offset = if (tile.1 / 30) % 2 == 0 { 0 } else { 2 };
         // background of a line.
         // Build viewport + 1 tile for background scroll.
-        for x in 0..(
+        for x in 0..(TILE_PER_LINE + 1) {
+            let tile_x = x + tile.0;
+            let clamped_tile_x = tile_x % TILE_PER_LINE;
+            let name_table_id = ((tile_x / TILE_PER_LINE) % 2) + table_id_offset;
+      
