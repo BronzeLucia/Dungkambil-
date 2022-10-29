@@ -54,4 +54,8 @@ impl Background {
             let name_table_id = ((tile_x / TILE_PER_LINE) % 2) + table_id_offset;
             config.offset_addr_by_name_table = Some((name_table_id as Addr) * 0x400);
             let position: SpritePosition = (clamped_tile_x as u8, clamped_tile_y as u8);
-            self.0.push(Ba
+            self.0.push(BackgroundCtx {
+                tile: Tile::new(vram, cram, palette, &position, &config, &mmc),
+                scroll_x: scroll.0,
+                scroll_y: scroll.1,
+                is_enabled: config.is_background_enab
