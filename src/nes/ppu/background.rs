@@ -58,4 +58,8 @@ impl Background {
                 tile: Tile::new(vram, cram, palette, &position, &config, &mmc),
                 scroll_x: scroll.0,
                 scroll_y: scroll.1,
-                is_enabled: config.is_background_enab
+                is_enabled: config.is_background_enable,
+            });
+        }
+    }
+}
