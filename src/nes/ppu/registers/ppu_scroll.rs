@@ -44,4 +44,7 @@ impl PpuScroll {
             Enable::Y => {
                 self.enable = Enable::X;
                 self.y = data;
- 
+            }
+        }
+    }
+}
