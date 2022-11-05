@@ -27,4 +27,14 @@ impl PpuScroll {
         self.enable = Enable::X;
     }    
 
-    pub fn ge
+    pub fn get_x(&self) -> Data {
+        self.x
+    }
+
+    pub fn get_y(&self) -> Data {
+        self.y
+    }    
+
+    pub fn write(&mut self, data: Data) {
+        match self.enable {
+            Enab
