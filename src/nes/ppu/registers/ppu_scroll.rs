@@ -16,4 +16,15 @@ pub struct PpuScroll {
 
 impl PpuScroll {
     pub fn new() -> Self {
-  
+        PpuScroll {
+            x: 0,
+            y: 0,
+            enable: Enable::X,
+        }
+    }
+
+    pub fn enable_x(&mut self) {
+        self.enable = Enable::X;
+    }    
+
+    pub fn ge
