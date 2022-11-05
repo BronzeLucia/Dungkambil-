@@ -37,4 +37,11 @@ impl PpuScroll {
 
     pub fn write(&mut self, data: Data) {
         match self.enable {
-            Enab
+            Enable::X => {
+                self.enable = Enable::Y;
+                self.x = data;
+            },
+            Enable::Y => {
+                self.enable = Enable::X;
+                self.y = data;
+ 
