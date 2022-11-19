@@ -25,4 +25,9 @@ pub fn mirror_down_sprite_addr(addr: Addr, is_horizontal_mirror: bool) -> Addr {
     addr
 }
 
-pub fn get_block_id(po
+pub fn get_block_id(position: &SpritePosition) -> u8 {
+    ((position.0 % 4) / 2) + (((position.1 % 4) / 2) * 2)
+}
+
+pub fn get_sprite_id(vram: &Ram, position: &SpritePosition, config: &SpriteConfig) -> u8 {
+    
