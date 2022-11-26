@@ -43,4 +43,6 @@ pub fn get_attribute(vram: &Ram, position: &SpritePosition, config: &SpriteConfi
     vram.read(mirror_down_sprite_addr(addr, config.is_horizontal_mirror))
 }
 
-pub fn build(cram: &Ram, spr
+pub fn build(cram: &Ram, sprite_id: u8, offset: u16, mmc: &Mmc, is_8x8: bool) -> Sprite {
+    let h = if is_8x8 { 1 } else { 2 };
+    let mut sprite: Sprite = (0..8 * h).into_iter().map(|_| vec![0; 8 * h]).collect
