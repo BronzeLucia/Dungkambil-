@@ -45,4 +45,9 @@ pub fn get_attribute(vram: &Ram, position: &SpritePosition, config: &SpriteConfi
 
 pub fn build(cram: &Ram, sprite_id: u8, offset: u16, mmc: &Mmc, is_8x8: bool) -> Sprite {
     let h = if is_8x8 { 1 } else { 2 };
-    let mut sprite: Sprite = (0..8 * h).into_iter().map(|_| vec![0; 8 * h]).collect
+    let mut sprite: Sprite = (0..8 * h).into_iter().map(|_| vec![0; 8 * h]).collect();
+    for k in 0..h {
+        for i in 0..16 {
+            for j in 0..8 {
+                let addr = ((sprite_id + (k as u8)) as u16) * 16 + i + offset;
+                let ram = cram.read(mmc.create_chr
