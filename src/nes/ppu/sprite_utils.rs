@@ -50,4 +50,7 @@ pub fn build(cram: &Ram, sprite_id: u8, offset: u16, mmc: &Mmc, is_8x8: bool) ->
         for i in 0..16 {
             for j in 0..8 {
                 let addr = ((sprite_id + (k as u8)) as u16) * 16 + i + offset;
-                let ram = cram.read(mmc.create_chr
+                let ram = cram.read(mmc.create_chram_addr(addr));
+                if ram & (0x80 >> j) as u8 != 0 {
+                    sprite[((k as u16) * 8 + i % 8) as usize][j] += (0x01 << (i / 8)) as u8;
+              
