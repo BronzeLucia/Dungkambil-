@@ -53,4 +53,16 @@ pub fn build(cram: &Ram, sprite_id: u8, offset: u16, mmc: &Mmc, is_8x8: bool) ->
                 let ram = cram.read(mmc.create_chram_addr(addr));
                 if ram & (0x80 >> j) as u8 != 0 {
                     sprite[((k as u16) * 8 + i % 8) as usize][j] += (0x01 << (i / 8)) as u8;
-              
+                }
+            }
+        }
+    }
+    sprite
+}
+
+#[test]
+fn test_get_block_id() {
+    let position = (2, 3);
+    let id = get_block_id(&position);
+    assert_eq!(id, 3);
+}
