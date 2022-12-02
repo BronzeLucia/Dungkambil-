@@ -10,4 +10,12 @@ pub struct Tile {
 }
 
 impl Tile {
-    pub f
+    pub fn new<P: PaletteRam>(
+        vram: &Ram,
+        cram: &Ram,
+        palette: &P,
+        position: &SpritePosition,
+        config: &SpriteConfig,
+        mmc: &Mmc,
+    ) -> Self {
+    
