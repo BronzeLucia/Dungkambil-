@@ -26,4 +26,13 @@ impl Tile {
         let sprite = build(
             &cram,
             sprite_id,
-            config.offset_addr_by_background
+            config.offset_addr_by_background_table,
+            &mmc,
+            true,
+        );
+        Tile {
+            sprite,
+            palette: palette.get(palette_id, PaletteType::Background),
+        }
+    }
+}
