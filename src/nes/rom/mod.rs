@@ -12,4 +12,7 @@ impl Rom {
         self.vec[addr as usize]
     }
 
-    pub fn size(&self) -
+    pub fn size(&self) -> usize {
+        self.vec.len()
+    }
+}
