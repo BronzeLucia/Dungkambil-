@@ -36,4 +36,18 @@ fn keycode_to_pad(key: Keycode) -> u8 {
         Keycode::Up => PAD_U,
         Keycode::Down => PAD_D,
         Keycode::Left => PAD_L,
-        Keycode::Right => PAD
+        Keycode::Right => PAD_R,
+        _ => 0,
+    }
+}
+
+pub struct App {
+    sdl_context: Sdl,
+    canvas: WindowCanvas,
+
+    ctx: Option<Context>,
+}
+
+impl App {
+    pub fn new() -> App {
+        let sdl_context = sdl2::init().un
