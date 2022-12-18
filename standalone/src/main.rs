@@ -30,4 +30,10 @@ const PAD_R: u8      = 0x80;
 fn keycode_to_pad(key: Keycode) -> u8 {
     match key {
         Keycode::X => PAD_A,
-        K
+        Keycode::Z => PAD_B,
+        Keycode::A => PAD_SELECT,
+        Keycode::S => PAD_START,
+        Keycode::Up => PAD_U,
+        Keycode::Down => PAD_D,
+        Keycode::Left => PAD_L,
+        Keycode::Right => PAD
