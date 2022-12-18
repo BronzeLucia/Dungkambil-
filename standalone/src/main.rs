@@ -50,4 +50,9 @@ pub struct App {
 
 impl App {
     pub fn new() -> App {
-        let sdl_context = sdl2::init().un
+        let sdl_context = sdl2::init().unwrap();
+        let video_subsystem = sdl_context.video().unwrap();
+        let window = video_subsystem.window("rustynes", WIDTH, HEIGHT)
+            .position_centered()
+            .build()
+            .u
