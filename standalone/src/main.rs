@@ -22,4 +22,12 @@ const PAD_A: u8      = 0x01;
 const PAD_B: u8      = 0x02;
 const PAD_SELECT: u8 = 0x04;
 const PAD_START: u8  = 0x08;
-const PAD_U: u8
+const PAD_U: u8      = 0x10;
+const PAD_D: u8      = 0x20;
+const PAD_L: u8      = 0x40;
+const PAD_R: u8      = 0x80;
+
+fn keycode_to_pad(key: Keycode) -> u8 {
+    match key {
+        Keycode::X => PAD_A,
+        K
