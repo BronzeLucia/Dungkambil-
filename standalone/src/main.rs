@@ -72,4 +72,9 @@ impl App {
     }
 
     pub fn run(&mut self) {
-        let mut event
+        let mut event_pump = self.sdl_context.event_pump().unwrap();
+        let mut pad = 0;
+        let mut prev_time = SystemTime::now();
+        'running: loop {
+            for event in event_pump.poll_iter() {
+                mat
