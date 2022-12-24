@@ -55,4 +55,14 @@ impl App {
         let window = video_subsystem.window("rustynes", WIDTH, HEIGHT)
             .position_centered()
             .build()
-            .u
+            .unwrap();
+        let canvas = window.into_canvas().build().unwrap();
+
+        App {
+            sdl_context,
+            canvas,
+            ctx: None,
+        }
+    }
+
+    p
