@@ -82,4 +82,7 @@ impl App {
                     Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
                         break 'running
                     },
- 
+                    Event::KeyDown { keycode: Some(key), .. } => {
+                        pad |= keycode_to_pad(key);
+                    },
+                    Event::KeyUp { keycode: Some
