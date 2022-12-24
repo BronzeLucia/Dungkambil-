@@ -65,4 +65,11 @@ impl App {
         }
     }
 
-    p
+    pub fn set_rom(&mut self, mut rom: Vec<u8>) {
+        let mut ctx = Context::new(&mut rom);
+        nes::reset(&mut ctx);
+        self.ctx = Some(ctx);
+    }
+
+    pub fn run(&mut self) {
+        let mut event
