@@ -93,4 +93,8 @@ impl App {
             }
 
             self.update(pad);
-      
+            self.render();
+            self.canvas.present();
+
+            let elapsed_time = SystemTime::now().duration_since(prev_time).expect("Time went backwards").as_nanos();
+            let wait = if elapsed_time 
