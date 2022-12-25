@@ -85,4 +85,12 @@ impl App {
                     Event::KeyDown { keycode: Some(key), .. } => {
                         pad |= keycode_to_pad(key);
                     },
-                    Event::KeyUp { keycode: Some
+                    Event::KeyUp { keycode: Some(key), .. } => {
+                        pad &= !keycode_to_pad(key);
+                    },
+                    _ => {}
+                }
+            }
+
+            self.update(pad);
+      
