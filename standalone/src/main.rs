@@ -104,4 +104,11 @@ impl App {
         }
     }
 
-   
+    fn update(&mut self, pad: u8) {
+        let optctx = &mut self.ctx;
+        match optctx {
+            Some(ctx) => {
+                nes::run(ctx, pad);
+            },
+            None => (),
+  
