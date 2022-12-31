@@ -120,4 +120,7 @@ impl App {
                 let buf = nes::get_render_buf(ctx);
                 for i in 0..HEIGHT {
                     for j in 0..WIDTH {
-   
+                        let base = ((i * WIDTH + j) * 4) as usize;
+                        let r = buf[base + 0];
+                        let g = buf[base + 1];
+                        let 
