@@ -123,4 +123,7 @@ impl App {
                         let base = ((i * WIDTH + j) * 4) as usize;
                         let r = buf[base + 0];
                         let g = buf[base + 1];
-                        let 
+                        let b = buf[base + 2];
+                        self.canvas.set_draw_color(Color::RGB(r, g, b));
+                        let _ = self.canvas.draw_point(Point::new(j as i32, i as i32));
+            
