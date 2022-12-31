@@ -126,4 +126,15 @@ impl App {
                         let b = buf[base + 2];
                         self.canvas.set_draw_color(Color::RGB(r, g, b));
                         let _ = self.canvas.draw_point(Point::new(j as i32, i as i32));
-            
+                    }
+                }
+            },
+            None => (),
+        }
+    }
+}
+
+#[no_mangle]
+fn canvas_render(_ptr: *const u8, _len: usize) {
+    //println!("canvas_render, len={}", len);
+}
