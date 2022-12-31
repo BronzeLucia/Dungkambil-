@@ -111,4 +111,13 @@ impl App {
                 nes::run(ctx, pad);
             },
             None => (),
-  
+        }
+    }
+
+    fn render(&mut self) {
+        match &mut self.ctx {
+            Some(ctx) => {
+                let buf = nes::get_render_buf(ctx);
+                for i in 0..HEIGHT {
+                    for j in 0..WIDTH {
+   
