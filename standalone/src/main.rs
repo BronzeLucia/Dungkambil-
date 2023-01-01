@@ -152,4 +152,14 @@ fn change_oscillator_frequency(_index: usize, _freq: usize) {}
 #[no_mangle]
 fn set_oscillator_volume(_index: usize, _volume: f32) {}
 #[no_mangle]
-fn set_oscillator_p
+fn set_oscillator_pulse_width(_index: usize, _width: f32) {}
+
+#[no_mangle]
+fn set_noise_frequency(_freq: f32) {}
+#[no_mangle]
+fn set_noise_volume(_volume: f32) {}
+#[no_mangle]
+fn stop_noise() {}
+#[no_mangle]
+fn start_noise() {}
+//#[no_mangl
