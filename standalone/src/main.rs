@@ -138,3 +138,12 @@ impl App {
 fn canvas_render(_ptr: *const u8, _len: usize) {
     //println!("canvas_render, len={}", len);
 }
+
+#[no_mangle]
+fn start_oscillator(_index: usize) {}
+#[no_mangle]
+fn stop_oscillator(_index: usize) {}
+//#[no_mangle]
+// fn close_oscillator(index: usize) {}
+#[no_mangle]
+fn set_oscillator_frequency(_index: usize, _f
