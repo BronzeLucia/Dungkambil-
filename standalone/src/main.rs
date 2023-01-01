@@ -146,4 +146,10 @@ fn stop_oscillator(_index: usize) {}
 //#[no_mangle]
 // fn close_oscillator(index: usize) {}
 #[no_mangle]
-fn set_oscillator_frequency(_index: usize, _f
+fn set_oscillator_frequency(_index: usize, _freq: usize) {}
+#[no_mangle]
+fn change_oscillator_frequency(_index: usize, _freq: usize) {}
+#[no_mangle]
+fn set_oscillator_volume(_index: usize, _volume: f32) {}
+#[no_mangle]
+fn set_oscillator_p
