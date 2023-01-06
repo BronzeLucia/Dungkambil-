@@ -162,4 +162,12 @@ fn set_noise_volume(_volume: f32) {}
 fn stop_noise() {}
 #[no_mangle]
 fn start_noise() {}
-//#[no_mangl
+//#[no_mangle]
+//fn close_noise();
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        eprintln!("<.nes file> required");
+        std::process::exit(1);
+    
