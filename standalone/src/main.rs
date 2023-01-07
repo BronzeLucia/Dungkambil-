@@ -181,4 +181,8 @@ fn main() {
             app.run();
         },
         Result::Err(err) => {
-            epri
+            eprintln!("Cannot open .nes file: {}", filename);
+            panic!(err);
+        }
+    }
+}
