@@ -170,4 +170,15 @@ fn main() {
     if args.len() < 2 {
         eprintln!("<.nes file> required");
         std::process::exit(1);
-    
+    }
+
+    let mut app = App::new();
+
+    let filename = &args[1];
+    match fs::read(filename) {
+        Result::Ok(rom) => {
+            app.set_rom(rom);
+            app.run();
+        },
+        Result::Err(err) => {
+            epri
