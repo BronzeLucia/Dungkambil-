@@ -43,4 +43,10 @@ etag@~1.8.1:
 
 finalhandler@1.1.0:
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/fina
+  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.0.tgz#ce0b6855b45853e791b2fcc680046d88253dd7f5"
+  dependencies:
+    debug "2.6.9"
+    encodeurl "~1.0.1"
+    escape-html "~1.0.3"
+    on-finished "~2.3.0"
+    parseur
